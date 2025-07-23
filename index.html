@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowBiz Web Solutions - Websites for Local Businesses</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <style>
+        /* Removed transform: none on mobile; JS will cap translateY instead */
+        /* Ensure hero-title is white and bold in dark mode */
+        .dark .hero-title {
+            color: #fff !important;
+            font-weight: bold;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Active menu style (same as hover) */
+        .nav-link.active,
+        .nav-link:focus {
+            background: #1f2937 !important;
+            color: #f472b6 !important;
+            box-shadow: 0 2px 8px rgba(236,72,153,0.13);
+        }
+        .dark .why-business-title {
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        :root {
+            --primary-light: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-light: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-light: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-light: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --bg-light: white;
+            --text-light: #333;
+            --card-light: rgba(255, 255, 255, 0.9);
+            
+            --primary-dark: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+            --secondary-dark: linear-gradient(135deg, #833ab4 0%, #fd1d1d 100%);
+            --accent-dark: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
+            --success-dark: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            --bg-dark: linear-gradient(135deg, #0c0c0c 0%, #434343 100%);
+            --text-dark: #fff;
+            --card-dark: rgba(255, 255, 255, 0.1);
+            /* added new */
+            --why-bus-p-dark : #ffffff94;
+            --why-bus-p1-dark : rgb(138 139 140);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+        body.dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            transition: background 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: #111827;
+        }
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .navbar {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1rem;
+            color: white !important;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 0;
+            padding: 0;
+            display: inline-block;
+            line-height: 44px;
+        }
+        .dark .logo {
+            background: linear-gradient(90deg, #fff 0%, #a8e6cf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #fff;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a,
+        .nav-links a * {
+            text-decoration: none !important;
+            color: inherit !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            line-height: 1.1 !important;
+        }
+        /* Force font size for navbar menu and icons with high specificity */
+        ul#navbarMenu > li > a.nav-link,
+        ul#navbarMenu > li > a.nav-link i {
+            font-size: 15px !important;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-light);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .theme-toggle {
+            background: var(--primary-light);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:0.1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:0.1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23grad1)"/></svg>') center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            animation: floatBg 10s ease-in-out infinite;
+        }
+        @keyframes floatBg {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1s ease-out;
+        }
+        .dark .hero h1 {
+            background: var(--primary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            animation: slideUp 1s ease-out 0.4s both;
+        }
+        .trust-line {
+            background: var(--success-light);
+            color: black;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            margin: 2rem 0;
+            font-weight: 400;
+            animation: slideUp 1s ease-out 0.6s both;
+            display: inline-block;
+        }
+        .dark .trust-line {
+            background: var(--success-dark);
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease-out 0.8s both;
+        }
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .btn-primary {
+            background: var(--primary-light);
+            color: white;
+        }
+        .btn-secondary {
+            background: var(--secondary-light);
+            color: white;
+        }
+        .btn-accent {
+            background: var(--accent-light);
+            color: white;
+        }
+        .dark .btn-primary {
+            background: var(--primary-dark);
+        }
+        .dark .btn-secondary {
+            background: var(--secondary-dark);
+        }
+        .dark .btn-accent {
+            background: var(--accent-dark);
+        }
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .dark .section-title {
+            background: var(--primary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .why-business {
+            background: var(--light);
+        }
+        .dark .why-business {
+            background: var(--dark);
+        }
+        .dark .why-business .p1 {
+            color: var(--why-bus-p1-dark);
+        }
+        .bg-gray-50 {
+            text-align: center !important;
+        }
+        .dark .bg-gray-50 p {
+            color: var(--why-bus-p-dark);
+        }
+        .dark .bg-gray-50 {
+            background : var(--dark);
+        }
+        .why-website {
+            background: var(--card-light);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .dark .why-website {
+            background: var(--card-dark);
+        }
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .advantage-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dark .advantage-card {
+            background: var(--card-dark);
+        }
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        .dark .advantage-icon {
+            background: var(--primary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .plan-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .plan-card {
+            background: var(--card-dark);
+        }
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-light);
+        }
+        .dark .plan-card::before {
+            background: var(--primary-dark);
+        }
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .service-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dark .service-card {
+            background: var(--card-dark);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--secondary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .dark .service-icon {
+            background: var(--secondary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .portfolio-item {
+            background: var(--card-light);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dark .portfolio-item {
+            background: var(--card-dark);
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .dark .portfolio-image {
+            background: var(--accent-dark);
+        }
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .team-member {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dark .team-member {
+            background: var(--card-dark);
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        .dark .team-avatar {
+            background: var(--primary-dark);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        .contact-info {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dark .contact-info {
+            background: var(--card-dark);
+        }
+        .contact-form {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dark .contact-form {
+            background: var(--card-dark);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: rgba(255,255,255,0.2);
+        }
+        .footer {
+            background: var(--primary-light);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+        .dark .footer {
+            background: var(--primary-dark);
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-3px);
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: slideUp 0.8s ease-out;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        /* --- Grow Section Styles (moved from inline) --- */
+        .grow-intro-para {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto 3.5rem auto;
+        }
+        body.dark .grow-intro-para {
+            color: rgb(138 139 140) !important;
+        }
+        .grow-section {
+            width: 100%;
+            background: gainsboro;
+            margin: 0;
+            padding: 0;
+        }
+        .grow-bg {
+            background: gainsboro;
+            width: 100%;
+        }
+        .grow-title {
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .grow-feature-card {
+            background: var(--card-light);
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: box-shadow 0.3s, transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 320px;
+        }
+        .grow-feature-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            transform: translateY(-6px) scale(1.03);
+        }
+        .grow-feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .grow-feature-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.1rem;
+            color: #222;
+            font-family: inherit;
+        }
+        body.dark .grow-feature-title {
+            color: #fff;
+        }
+        .grow-feature-card p {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 0;
+            font-family: inherit;
+        }
+        body.dark .grow-feature-card p {
+            color: #8a8b8c;
+        }
+        .grow-details {
+            margin-top: 2rem;
+        }
+        .grow-detail-block {
+            background: var(--card-light);
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 1.5rem 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 1024px) {
+            .grow-features {
+                grid-template-columns: 1fr 1fr;
+            }
+            .grow-details {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .grow-content {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .grow-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Dark mode styles */
+        body.dark .grow-section, body.dark .grow-bg {
+            background: var(--bg-dark);
+        }
+        body.dark .grow-feature-card, body.dark .grow-detail-block {
+            background: var(--card-dark);
+            color: var(--text-dark);
+        }
+        body.dark .grow-title, body.dark .grow-feature-icon {
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+    <style>
+    /* Animated Hamburger Icon */
+    .hamburger-icon.modern-hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .hamburger-svg-modern .bar {
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      stroke: currentColor;
+      stroke-width: 1;
+      stroke-linecap: round;
+    }
+    .hamburger-svg-modern .dot {
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      /* Dot color inherits currentColor */
+    }
+    .hamburger-open .hamburger-svg-modern .bar.top {
+      transform: translateY(5px) rotate(45deg);
+    }
+    .hamburger-open .hamburger-svg-modern .bar.middle {
+      opacity: 0;
+      transform: scaleX(0.5);
+    }
+    .hamburger-open .hamburger-svg-modern .bar.bottom {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+    /* Animate dots with lines */
+    .hamburger-open .hamburger-svg-modern .dot-top {
+      transform: translateY(5px) rotate(45deg);
+    }
+    .hamburger-open .hamburger-svg-modern .dot-middle {
+      opacity: 0;
+      transform: scaleX(0.5);
+    }
+    .hamburger-open .hamburger-svg-modern .dot-bottom {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+    #mobileMenuBtn {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+      min-height: 36px !important;
+      padding: 0 !important;
+    }
+    #mobileMenuBtn .hamburger-icon {
+      font-size: 1rem !important;
+    }
+    </style>
+    <style>
+    .company-logo-text {
+        display: inline-block;
+        font-weight: bold;
+        font-size: 1.1rem;
+        letter-spacing: 1.1px;
+        line-height: 1.1;
+        color: #fff !important;
+        font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+        text-transform: uppercase;
+        opacity: 0.93;
+    }
+    </style>
+    <!-- Hero/animation styles moved from section to head for best practice -->
+    <style>
+        @keyframes fadein { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none; } }
+        .animate-fadein { animation: fadein 1s cubic-bezier(0.4,0,0.2,1) both; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-24px);} }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes bounce-slow { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+        .animate-bounce-slow { animation: bounce-slow 2.5s infinite; }
+    </style>
+    <style>
+        @media (max-width: 575.98px) {
+            .hero-heading .hero-line {
+                margin-bottom: 0.25rem !important;
+            }
+            .hero-heading .hero-gradient-text {
+                background: linear-gradient(180deg, #6366F1 0%, #A21CAF 60%, #F472B6 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-weight: 800;
+                margin-bottom: 0.25rem !important;
+            }
+            .hero-heading .hero-underline {
+                margin-top: 0.75rem !important;
+            }
+            .demo-icon {
+                margin: 0 !important;
+            }
+            .demo-text {
+                text-align: center;
+            }
+            .flex.items-center.gap-4.mb-7.animate-fadein.delay-200 {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            /* Set line height for hero heading text on mobile */
+            .hero h1 span {
+                line-height: 36px !important;
+            }
+            .leading-relaxed {
+                line-height: 1.5;
+            }
+
+            /* Fix for header right flex container on mobile */
+            .navbar .navbar-right {
+                flex: 0 0 auto !important;
+                min-width: unset !important;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .hero-inner-flex {
+                flex-direction: column-reverse !important;
+            }
+            #home.hero {
+                min-height: auto !important;
+                height: auto !important;
+            }
+            .hero-svg-desktop {
+                display: none !important;
+            }
+            .hero-svg-mobile {
+                display: flex !important;
+            }
+        }
+        @media (min-width: 576px) {
+            .hero-svg-mobile {
+                display: none !important;
+            }
+        }
+                /* Mobile drawer menu icon spacing */
+        @media (max-width: 575.98px) {
+            .drawer-menu-icon {
+                margin-right: 0.85em !important;
+            }
+            .drawer-bottom-section {
+                display: flex;
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+            .drawer-demo-btn {
+                font-size: 1.08rem;
+                padding: 0.85rem 1.2rem;
+                border-radius: 0.7rem;
+                background: linear-gradient(90deg, #6366F1 0%, #A21CAF 50%, #F472B6 100%);
+                color: #fff !important;
+                font-weight: 600;
+                box-shadow: 0 2px 12px rgba(99,102,241,0.13);
+            }
+            .drawer-demo-btn i {
+                font-size: 1.1em;
+            }
+            .drawer-social {
+                margin-top: 0.2rem;
+            }
+            .drawer-social a {
+                width: 2.3rem;
+                height: 2.3rem;
+                font-size: 1.18rem;
+            }
+            .get-a-free {
+                flex-direction: column !important;
+            }
+            .hero-svg-mobile.mt-8 {
+                margin-top: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); position: relative;">
+    <script>
+    // --- HERO PARALLAX EFFECT WITH MOBILE CAP ---
+    document.addEventListener('DOMContentLoaded', function() {
+      var hero = document.getElementById('home');
+      if (!hero) return;
+      function isMobile() {
+        return window.innerWidth <= 575.98;
+      }
+      function onScroll() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var translateY = -scrollY * 0.4;
+        if (isMobile()) {
+          // Cap the translateY to a maximum of -150px on mobile
+          translateY = Math.max(translateY, -150);
+        }
+        hero.style.transform = `translateY(${translateY}px)`;
+      }
+      window.addEventListener('scroll', onScroll);
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    });
+    </script>
+    <!-- Particles.js container -->
+    <div id="particles-js" style="position:fixed;z-index:0;top:0;left:0;width:100vw;height:100vh;pointer-events:none;"></div>
+    <nav class="navbar w-full z-50 transition-all duration-300" id="mainNavbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-[44px] min-h-[44px]">
+            <div class="flex-1 flex items-center gap-2 select-none min-w-0">
+            <span class="logo flex items-center gap-1">
+                <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="hidden md:block w-8 h-8 shadow-lg" />
+                <span class="company-logo-text">GrowBiz Web Solutions</span>
+            </span>
+            </div>
+            <div class="flex-[2] flex items-center justify-end min-w-0 navbar-right">
+            <ul class="hidden md:flex items-center gap-1.5 lg:gap-3 xl:gap-4" id="navbarMenu">
+                <li><a href="#home" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-yellow-200 transition"><i class="fas fa-home mr-2" style="font-size: 0.95em;"></i>Home</a></li>
+                <li><a href="#services" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-pink-200 transition"><i class="fas fa-concierge-bell mr-2" style="font-size: 0.95em;"></i>Services</a></li>
+                <li><a href="#portfolio" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-indigo-200 transition"><i class="fas fa-briefcase mr-2" style="font-size: 0.95em;"></i>Portfolio</a></li>
+                <li><a href="#about" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-purple-200 transition"><i class="fas fa-user-friends mr-2" style="font-size: 0.95em;"></i>Our Team</a></li>
+                <li><a href="#contact" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-green-200 transition"><i class="fas fa-envelope mr-2" style="font-size: 0.95em;"></i>Contact</a></li>
+            </ul>
+            <!-- Hamburger for mobile -->
+            <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none ml-2" aria-label="Open menu">
+                <span class="hamburger-icon modern-hamburger" aria-hidden="true">
+                  <svg class="hamburger-svg-modern" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <defs>
+                      <linearGradient id="hamburger-gradient" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#6366F1"/>
+                        <stop offset="0.5" stop-color="#A21CAF"/>
+                        <stop offset="1" stop-color="#F472B6"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Top line -->
+                    <rect x="3" y="6" width="22" height="4" rx="2" fill="url(#hamburger-gradient)" stroke="#fff" stroke-width="1.5" class="bar top" />
+                    <!-- Middle line -->
+                    <rect x="3" y="12" width="22" height="4" rx="2" fill="url(#hamburger-gradient)" stroke="#fff" stroke-width="1.5" class="bar middle" />
+                    <!-- Bottom line -->
+                    <rect x="3" y="18" width="22" height="4" rx="2" fill="url(#hamburger-gradient)" stroke="#fff" stroke-width="1.5" class="bar bottom" />
+                  </svg>
+                </span>
+            </button>
+            </div>
+            <!-- <div class="flex items-center gap-2">
+            <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-100 text-xl shadow transition focus:outline-none" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobileMenuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            </div> -->
+        </div>
+    </nav>
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileDrawer" class="fixed top-0 left-0 w-64 h-full bg-white dark:bg-gray-900 shadow-lg z-[9999] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" style="will-change: transform;">
+        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-800" style="height: 60px;">
+            <span class="logo flex items-center gap-2">
+                <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="w-8 h-8 shadow-lg" />
+                <span class="font-bold text-lg tracking-widest text-gray-900 dark:text-white" style="letter-spacing:2px;">GBWS</span>
+            </span>
+            <button id="closeDrawerBtn" class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none ml-2" aria-label="Close menu">
+                <span class="hamburger-icon modern-hamburger" aria-hidden="true">
+                  <svg class="hamburger-svg-modern" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <defs>
+                      <linearGradient id="close-gradient" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#6366F1"/>
+                        <stop offset="0.5" stop-color="#A21CAF"/>
+                        <stop offset="1" stop-color="#F472B6"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- X icon with white outer stroke and gradient inner fill, matching hamburger style -->
+                    <line x1="7" y1="7" x2="21" y2="21" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+                    <line x1="21" y1="7" x2="7" y2="21" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+                    <line x1="7" y1="7" x2="21" y2="21" stroke="url(#close-gradient)" stroke-width="2.2" stroke-linecap="round" />
+                    <line x1="21" y1="7" x2="7" y2="21" stroke="url(#close-gradient)" stroke-width="2.2" stroke-linecap="round" />
+                  </svg>
+                </span>
+            </button>
+        </div>
+        <ul class="flex flex-col gap-2 p-6" style="padding-bottom: 120px;">
+            <li><a href="#home" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-home drawer-menu-icon" style="font-size: 0.95em;"></i>Home</a></li>
+            <li><a href="#services" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-concierge-bell drawer-menu-icon" style="font-size: 0.95em;"></i>Services</a></li>
+            <li><a href="#portfolio" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-briefcase drawer-menu-icon" style="font-size: 0.95em;"></i>Portfolio</a></li>
+            <li><a href="#about" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-user-friends drawer-menu-icon" style="font-size: 0.95em;"></i>Our Team</a></li>
+            <li><a href="#contact" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-envelope drawer-menu-icon" style="font-size: 0.95em;"></i>Contact</a></li>
+        </ul>
+        <!-- Drawer bottom section: Request Demo button and social links (mobile only) -->
+        <div class="drawer-bottom-section px-6 pb-6 pt-2 flex flex-col gap-4" style="position: fixed; left: 0; bottom: 0; width: 100%; background: inherit; z-index: 10000; max-width: 16rem;">
+            <div class="drawer-social flex items-center justify-center gap-3 mb-1">
+                <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition text-xl text-white shadow"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 transition text-xl text-white shadow"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 transition text-xl text-white shadow"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 hover:from-green-500 hover:to-teal-500 transition text-xl text-white shadow"><i class="fab fa-twitter"></i></a>
+            </div>
+            <a href="#contact" class="btn btn-accent w-full flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none drawer-demo-btn"><i class="fas fa-calendar"></i> Request Demo</a>
+        </div>
+        </ul>
+    </div>
+    <script>
+    // Mobile drawer menu logic with modern animated hamburger
+    document.addEventListener('DOMContentLoaded', function() {
+      var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      var mobileDrawer = document.getElementById('mobileDrawer');
+      var closeDrawerBtn = document.getElementById('closeDrawerBtn');
+      function openDrawer() {
+        mobileDrawer.style.transform = 'translateX(0)';
+        // Removed hamburger-open class for no animation
+      }
+      function closeDrawer() {
+        mobileDrawer.style.transform = 'translateX(-100%)';
+        // Removed hamburger-open class for no animation
+      }
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', function() {
+          if (mobileDrawer.style.transform === 'translateX(0)') {
+            closeDrawer();
+          } else {
+            openDrawer();
+          }
+        });
+      }
+      if (closeDrawerBtn && mobileDrawer) {
+        closeDrawerBtn.addEventListener('click', closeDrawer);
+      }
+      // Close drawer on nav link click (optional)
+      mobileDrawer.querySelectorAll('a.nav-link').forEach(function(link) {
+        link.addEventListener('click', closeDrawer);
+      });
+    });
+    // Robust Scrollspy: highlight menu based on section top vs navbar bottom
+    document.addEventListener('DOMContentLoaded', function() {
+    // Separate navLinks for desktop and mobile
+    const desktopNavLinks = Array.from(document.querySelectorAll('#navbarMenu .nav-link'));
+    const mobileNavLinks = Array.from(document.querySelectorAll('#mobileDrawer .nav-link'));
+    const sectionIds = ['home', 'services', 'portfolio', 'about', 'contact'];
+    const sectionEls = sectionIds.map(id => document.getElementById(id));
+
+    function onScrollSpy() {
+        const navbar = document.getElementById('mainNavbar');
+        const navbarRect = navbar ? navbar.getBoundingClientRect() : { bottom: 0 };
+        const navbarBottom = navbarRect.bottom;
+        let activeIdx = 0;
+        for (let i = 0; i < sectionEls.length; i++) {
+            const section = sectionEls[i];
+            if (!section) continue;
+            const rect = section.getBoundingClientRect();
+            if (rect.top < navbarBottom) {
+                activeIdx = i;
+            }
+        }
+        // Update desktop nav
+        desktopNavLinks.forEach((link, idx) => {
+            if (idx === activeIdx) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        // Update mobile drawer nav
+        mobileNavLinks.forEach((link, idx) => {
+            if (idx === activeIdx) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScrollSpy);
+    window.addEventListener('resize', onScrollSpy);
+    onScrollSpy();
+    });
+    </script>
+    <script>
+    // Navbar background transition on scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('mainNavbar');
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Hide particles when footer is in view using Intersection Observer
+    function hideParticlesOnFooter() {
+        var particles = document.getElementById('particles-js');
+        var footer = document.querySelector('.footer');
+        if (!particles || !footer) return;
+        var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+            particles.style.display = 'none';
+            } else {
+            particles.style.display = '';
+            }
+        });
+        }, { threshold: 0, rootMargin: '0px' });
+        observer.observe(footer);
+    }
+    window.addEventListener('DOMContentLoaded', hideParticlesOnFooter);
+    </script>
+    <!-- Hero Section -->
+    <section id="home" class="hero w-full max-w-full p-0">
+    <div class="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-[30px] bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 w-full max-w-full overflow-hidden shadow-xl hero-inner-flex" style="min-height: 100vh;">
+        <!-- Left: Text Content -->
+        <div class="flex-1 flex flex-col items-start justify-center z-10">
+        <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold md:font-extrabold mb-4 md:mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg leading-relaxed animate-fadein text-center mx-auto">
+            <span class="block">Build Your</span>
+            <span class="inline-block bg-gradient-to-tr from-pink-400 to-yellow-400 bg-clip-text text-transparent font-extrabold">Digital Identity</span>
+            <span class="block">Today</span>
+            <span class="block w-16 h-1 mt-3 mx-auto bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full opacity-80 animate-fadein"></span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 font-medium max-w-xl animate-fadein">
+            We help local businesses in Nagpur get online with <span class="text-indigo-500 font-semibold">powerful</span>, <span class="text-pink-500 font-semibold">affordable</span> websites designed to increase trust, build brands, and engage customers.
+        </p>
+        <div class="flex items-center gap-4 mb-7 animate-fadein get-a-free">
+            <img src="./open-gift.gif" alt="Free Demo" class="w-14 h-14 rounded-lg shadow-lg border-2 border-pink-200 animate-bounce-slow demo-icon" />
+            <span class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-semibold demo-text">Get a <span class="text-pink-500 font-bold">free demo</span> at your doorstep – no cost, no pressure. <br class="hidden md:block"/>Call or WhatsApp us now to discuss your project!</span>
+        </div>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-4 w-full max-w-xl mx-auto animate-fadein ">
+            <a href="tel:+919876543210" class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/919876543210" class="btn btn-secondary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+            <a href="#contact" class="btn btn-accent w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-calendar"></i> Request Demo</a>
+        </div>
+        </div>
+        <!-- Right: Accent Image/Shape -->
+        <div class="hidden md:flex flex-1 items-center justify-center relative h-full z-0 hero-svg-desktop">
+            <div class="absolute -top-20 -right-20 w-[520px] h-[520px] rounded-full blur-[90px] opacity-90 animate-float z-0" style="background: linear-gradient(135deg, #6366F1 0%, #A21CAF 50%, #F472B6 100%);"></div>
+            <div class="w-72 h-72 flex items-center justify-center relative z-10 animate-fadein">
+                <!-- SVG illustration with transparent background, no border, larger size -->
+                <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[400px] h-[400px] max-w-none max-h-none rounded-none">
+                    <!-- Main device frame -->
+                    <rect x="16" y="40" width="288" height="192" rx="24" fill="url(#bg-gradient)"/>
+                    <rect x="32" y="56" width="256" height="160" rx="16" fill="#fff" fill-opacity="0.95"/>
+                    <!-- Content lines -->
+                    <rect x="48" y="80" width="80" height="16" rx="8" fill="#6366F1"/>
+                    <rect x="48" y="112" width="160" height="12" rx="6" fill="#A21CAF"/>
+                    <rect x="48" y="136" width="120" height="12" rx="6" fill="#F472B6"/>
+                    <rect x="48" y="160" width="96" height="12" rx="6" fill="#F59E42"/>
+                    <rect x="48" y="184" width="64" height="12" rx="6" fill="#10B981"/>
+                    <!-- Accent blocks -->
+                    <rect x="180" y="80" width="80" height="56" rx="8" fill="#E0E7FF"/>
+                    <rect x="180" y="144" width="80" height="24" rx="8" fill="#FDE68A"/>
+                    <circle cx="220" cy="156" r="6" fill="#F472B6"/>
+                    <circle cx="240" cy="156" r="6" fill="#6366F1"/>
+                    <circle cx="260" cy="156" r="6" fill="#10B981"/>
+                    <!-- Button -->
+                    <g>
+                        <rect x="120" y="220" width="80" height="24" rx="12" fill="#6366F1"/>
+                        <text x="160" y="238" text-anchor="middle" font-size="14" font-family="'Segoe UI',sans-serif" fill="#fff" font-weight="bold">Get Started</text>
+                    </g>
+                    <!-- Plus icon -->
+                    <g>
+                        <circle cx="60" cy="220" r="18" fill="#F472B6"/>
+                        <path d="M60 212v8m0 0v8m0-8h8m-8 0h-8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                    </g>
+                    <!-- Check icon -->
+                    <g>
+                        <circle cx="260" cy="60" r="12" fill="#10B981"/>
+                        <path d="M256 60l4 4 8-8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                    </g>
+                    <defs>
+                        <linearGradient id="bg-gradient" x1="16" y1="40" x2="304" y2="232" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#6366F1"/>
+                            <stop offset="0.5" stop-color="#F472B6"/>
+                            <stop offset="1" stop-color="#FDE68A"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+        <!-- Mobile SVG (visible only on mobile) -->
+        <div class="flex md:hidden flex-1 items-center justify-center relative h-full z-0 hero-svg-mobile mt-8">
+            <div class="absolute -top-10 right-0 left-0 mx-auto w-[220px] h-[220px] rounded-full blur-[50px] opacity-90 animate-float z-0" style="background: linear-gradient(135deg, #6366F1 0%, #A21CAF 50%, #F472B6 100%);"></div>
+            <div class="w-44 h-44 flex items-center justify-center relative z-10 animate-fadein">
+                <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[180px] h-[180px] max-w-none max-h-none rounded-none">
+                    <!-- Main device frame -->
+                    <rect x="16" y="40" width="288" height="192" rx="24" fill="url(#bg-gradient)"/>
+                    <rect x="32" y="56" width="256" height="160" rx="16" fill="#fff" fill-opacity="0.95"/>
+                    <!-- Content lines -->
+                    <rect x="48" y="80" width="80" height="16" rx="8" fill="#6366F1"/>
+                    <rect x="48" y="112" width="160" height="12" rx="6" fill="#A21CAF"/>
+                    <rect x="48" y="136" width="120" height="12" rx="6" fill="#F472B6"/>
+                    <rect x="48" y="160" width="96" height="12" rx="6" fill="#F59E42"/>
+                    <rect x="48" y="184" width="64" height="12" rx="6" fill="#10B981"/>
+                    <!-- Accent blocks -->
+                    <rect x="180" y="80" width="80" height="56" rx="8" fill="#E0E7FF"/>
+                    <rect x="180" y="144" width="80" height="24" rx="8" fill="#FDE68A"/>
+                    <circle cx="220" cy="156" r="6" fill="#F472B6"/>
+                    <circle cx="240" cy="156" r="6" fill="#6366F1"/>
+                    <circle cx="260" cy="156" r="6" fill="#10B981"/>
+                    <!-- Button -->
+                    <g>
+                        <rect x="120" y="220" width="80" height="24" rx="12" fill="#6366F1"/>
+                        <text x="160" y="238" text-anchor="middle" font-size="14" font-family="'Segoe UI',sans-serif" fill="#fff" font-weight="bold">Get Started</text>
+                    </g>
+                    <!-- Plus icon -->
+                    <g>
+                        <circle cx="60" cy="220" r="18" fill="#F472B6"/>
+                        <path d="M60 212v8m0 0v8m0-8h8m-8 0h-8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                    </g>
+                    <!-- Check icon -->
+                    <g>
+                        <circle cx="260" cy="60" r="12" fill="#10B981"/>
+                        <path d="M256 60l4 4 8-8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                    </g>
+                    <defs>
+                        <linearGradient id="bg-gradient" x1="16" y1="40" x2="304" y2="232" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#6366F1"/>
+                            <stop offset="0.5" stop-color="#F472B6"/>
+                            <stop offset="1" stop-color="#FDE68A"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    </section>
+    <!-- Mobile hero SVG and height fix -->
+    <style>
+        /* Mobile header responsive styles */
+        @media (max-width: 575.98px) {
+            .navbar .logo {
+                display: flex !important;
+                align-items: center !important;
+            }
+            .navbar .logo img {
+                display: block !important;
+            }
+            #navbarMenu {
+                display: none !important;
+            }
+            #mobileMenuBtn {
+                display: flex !important;
+            }
+            #mobileDrawer {
+                display: block !important;
+            }
+            /* Only in mobile: fix navbar and give it a solid background */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #111827 !important;
+                z-index: 50;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+            }
+            #home.hero {
+                padding-top: 56px !important;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .hero-inner-flex {
+                flex-direction: column-reverse !important;
+            }
+            #home.hero {
+                min-height: auto !important;
+                height: auto !important;
+            }
+            .hero-svg-desktop {
+                display: none !important;
+            }
+            .hero-svg-mobile {
+                display: flex !important;
+            }
+        }
+        @media (min-width: 576px) {
+            .hero-svg-mobile {
+                display: none !important;
+            }
+        }
+    </style>
+    <!-- Why Your Business Needs a Website Section -->
+    <section id="why-business" class="why-business section max-w-full p-0">
+        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Why Your Business Needs a Website</h2>
+        <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">In today's digital world, your website is your business card, your shopfront, and your reputation all in one place.</p>
+            <p class="text-base text-gray-500 dark:text-gray-400">If you don't have a website, you're invisible to most customers. A professional site builds trust, gives information, and brings in new business.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-clock"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Always Open</h3>
+            <p class="text-gray-600 dark:text-gray-300">Your business is visible 24/7, even when you're not working.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fab fa-google"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Appear on Google</h3>
+            <p class="text-gray-600 dark:text-gray-300">Get found by customers searching for your services.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-shield-alt"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Build Trust</h3>
+            <p class="text-gray-600 dark:text-gray-300">A professional website increases your credibility instantly.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-chart-line"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Grow Sales</h3>
+            <p class="text-gray-600 dark:text-gray-300">Turn online visitors into real customers and bookings.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 to-orange-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-bullhorn"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Showcase Your Brand</h3>
+            <p class="text-gray-600 dark:text-gray-300">Present your unique story, services, and values.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-yellow-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-star"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Highlight Reviews</h3>
+            <p class="text-gray-600 dark:text-gray-300">Share testimonials and build social proof easily.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Why Your Business Needs a Website Section -->
+    <section id="how-we-help" class="section max-w-full p-0">
+        <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">How We Help You Grow</h2>
+        <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">We go beyond just building websites. Our mission is to empower your business with a complete digital presence that attracts, engages, and converts your ideal customers.</p>
+            <p class="text-base text-gray-500 dark:text-gray-400">Here’s how we deliver real growth for your business:</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-bullseye"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Tailored Strategy</h3>
+            <p class="text-gray-600 dark:text-gray-300">We analyze your business, audience, and goals to craft a custom online strategy—no cookie-cutter solutions.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-laptop-code"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Modern, Responsive</h3>
+            <p class="text-gray-600 dark:text-gray-300">Your site will look stunning and work perfectly on every device, with fast load times and a seamless user experience.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-search-dollar"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">SEO & Google Visibility</h3>
+            <p class="text-gray-600 dark:text-gray-300">We optimize your website for search engines so your business appears on Google and attracts more local customers.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-handshake"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Lead Generation Tools</h3>
+            <p class="text-gray-600 dark:text-gray-300">Integrated contact forms, WhatsApp chat, and call-to-action buttons make it easy for visitors to reach you and become real customers.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-chart-line text-indigo-500 mr-2"></i> Ongoing Support & Updates</h4>
+            <p class="text-gray-600 dark:text-gray-300">We don’t disappear after launch. Enjoy ongoing support, content updates, and technical help so your website always stays fresh and secure.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-users text-green-500 mr-2"></i> Local Market Expertise</h4>
+            <p class="text-gray-600 dark:text-gray-300">We understand the Nagpur market and what local customers expect. Our solutions are designed to help you stand out and win in your area.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-shield-alt text-blue-500 mr-2"></i> Security & Privacy</h4>
+            <p class="text-gray-600 dark:text-gray-300">Your site is protected with the latest security best practices, SSL, and privacy features to keep your business and customer data safe.</p>
+            </div>
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-rocket text-pink-500 mr-2"></i> Digital Growth Partner</h4>
+            <p class="text-gray-600 dark:text-gray-300">We’re your long-term partner for digital growth—ready to help with new features, marketing, and advice as your business evolves.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="section w-full max-w-full shadow-xl p-0 m-0" style="margin-bottom: 1px;">
+        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Our Services</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-code"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Website Design</h3>
+            <p class="text-gray-600 dark:text-gray-300">Custom, responsive websites that reflect your brand and drive results. Static and dynamic options for every business need.</p>
+        </div>
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-map-marker-alt"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Google Business Listing</h3>
+            <p class="text-gray-600 dark:text-gray-300">Get found on Google Maps and local search. We set up and optimize your business profile for maximum visibility.</p>
+        </div>
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-red-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-server"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Hosting & Domain</h3>
+            <p class="text-gray-600 dark:text-gray-300">Fast, secure hosting and domain management. We handle all the technical details so you can focus on your business.</p>
+        </div>
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 to-orange-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-palette"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Logo & Branding</h3>
+            <p class="text-gray-600 dark:text-gray-300">Professional logo design and brand identity to make your business stand out and be memorable.</p>
+        </div>
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-chart-bar"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">SEO Optimization</h3>
+            <p class="text-gray-600 dark:text-gray-300">On-page SEO and best practices to help your website rank higher and attract more customers from Google.</p>
+        </div>
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-comments"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Integration Services</h3>
+            <p class="text-gray-600 dark:text-gray-300">WhatsApp, contact forms, and other integrations to make it easy for customers to reach you and interact.</p>
+        </div>
+        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-500 to-blue-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-bullhorn"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Digital Marketing</h3>
+            <p class="text-gray-600 dark:text-gray-300">Grow your business with social media, Google Ads, and digital campaigns tailored for local success.</p>
+        </div>
+        </div>
+        </div>
+    </section>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section max-w-full p-0">
+        <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Our Portfolio</h2>
+        <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">See how we've helped Nagpur businesses grow with beautiful, high-performing websites.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <!-- Portfolio Card 1 -->
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-graduation-cap"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">XYZ Tuition Classes</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Dharampeth, Nagpur</p>
+            <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>60% increase in student inquiries</p>
+            <p class="text-gray-600 dark:text-gray-300">Complete website with online admission forms, fee structure, and teacher profiles.</p>
+            </div>
+            <!-- Portfolio Card 2 -->
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-cut"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Beauty Salon</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Sitabuldi, Nagpur</p>
+            <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>45% more bookings online</p>
+            <p class="text-gray-600 dark:text-gray-300">Modern website with service gallery, online booking, and customer reviews.</p>
+            </div>
+            <!-- Portfolio Card 3 -->
+            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-shopping-bag"></i></div>
+            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Local Retailer</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Itwari, Nagpur</p>
+            <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>30% increase in trust & traffic</p>
+            <p class="text-gray-600 dark:text-gray-300">Professional showcase website with product catalog and WhatsApp integration.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Unified Pricing & Suitability Section (Revised Layout) -->
+    <section id="pricing-suitability" class="section max-w-full p-0">
+      <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full">
+        <!-- Pricing Heading -->
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Pricing Plan</h2>
+        <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Choose the right website for your business. Transparent pricing, no hidden fees.</p>
+        </div>
+        <!-- Pricing Plans -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-12">
+          <!-- Static Website Card -->
+          <div class="plan-card bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg"><i class="fas fa-file-code"></i></div>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white">Static Website</h3>
+            <div class="flex flex-col items-center mb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="line-through text-gray-400 text-lg font-semibold">₹13,999</span>
+                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-0.5 rounded-full border border-pink-300">50% OFF</span>
+              </div>
+              <span class="text-3xl font-extrabold text-indigo-500 dark:text-indigo-400">₹6,999 <span class="text-base font-medium text-gray-500 dark:text-gray-400">/ year</span></span>
+            </div>
+            <ul class="text-gray-600 dark:text-gray-300 text-left mb-6 space-y-2">
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Single page web application (Home, About, Services, Contact, etc.)</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Mobile first, trending and modern design</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Fast loading & optimized performance</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Contact form & WhatsApp integration</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Google Maps & basic SEO</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>SSL certificate installations</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>Live chat integration</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>1 year hosting & domain</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>1 year support and maintenance</span></li>
+            </ul>
+            <a href="#contact" class="btn btn-primary w-full mt-auto justify-center"><i class="fas fa-calendar"></i> Request Demo</a>
+          </div>
+          <!-- Dynamic Website Card -->
+          <div class="plan-card bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+            <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 text-white text-3xl mb-5 shadow-lg"><i class="fas fa-database"></i></div>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white">Dynamic Website</h3>
+            <div class="flex flex-col items-center mb-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="line-through text-gray-400 text-lg font-semibold">₹49,998</span>
+                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-0.5 rounded-full border border-pink-300">60% OFF</span>
+              </div>
+              <span class="text-3xl font-extrabold text-pink-500 dark:text-pink-400">₹19,999 <span class="text-base font-medium text-gray-500 dark:text-gray-400">/ year</span></span>
+            </div>
+            <ul class="text-gray-600 dark:text-gray-300 text-left mb-6 space-y-2">
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1 font-bold bg-orange-100 text-orange-600 rounded px-2 py-1 shadow-sm">Everything included in the Static Website Plan</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">User authentication & login system (register, login, forgot password, reset password)</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Advanced admin panel for content and role management</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Unlimited pages with a blog or news section</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Photo galleries, testimonials, and client reviews</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Improved SEO, Google Analytics & performance tracking, Daily Backups</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Multilingual feature for wider audience reach</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Payment gateway integration for online payments</span></li>
+            </ul>
+            <a href="#contact" class="btn w-full mt-auto justify-center" style="background: linear-gradient(90deg, #ec4899 0%, #f472b6 50%, #fbb6ce 100%); color: #fff; font-weight: 600; box-shadow: 0 2px 8px 0 rgba(236,72,153,0.15);"><i class="fas fa-calendar"></i> Request Demo</a>
+          </div>
+        </div>
+        <!-- Modern Divider -->
+        <div class="flex items-center justify-center my-8">
+          <div class="h-1 w-52 rounded-full bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-400 opacity-90 shadow-md animate-pulse"></div>
+        </div>
+        <!-- Suitability Heading -->
+        <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-8 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Which Plan is Right for You?</h2>
+        <!-- Suitability Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          <!-- Static Website Suitable For -->
+          <div class="suit-card bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-indigo-100 dark:border-indigo-700">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-2xl shadow-lg"><i class="fas fa-file-code"></i></span>
+              <h3 class="font-bold text-xl text-gray-900 dark:text-white">Static Website</h3>
+            </div>
+            <h4 class="text-base font-semibold text-indigo-500 mb-2">Suitable For:</h4>
+            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Business landing page</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Promotional or marketing site</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Portfolio site</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Personal branding site (salon, coaching center, gym, showrooms, startups, clinics, charter accountant etc.)</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Event or invitation website</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Restaurant/menu display site</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>NGO or trust info site</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Basic booking and appointment site</li>
+            </ul>
+          </div>
+          <!-- Dynamic Website Suitable For -->
+          <div class="suit-card bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-pink-100 dark:border-pink-700">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 text-white text-2xl shadow-lg"><i class="fas fa-database"></i></span>
+              <h3 class="font-bold text-xl text-gray-900 dark:text-white">Dynamic Website</h3>
+            </div>
+            <h4 class="text-base font-semibold text-pink-500 mb-2">Suitable For:</h4>
+            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>E-commerce store</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Online order and booking site</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Real estate listing site</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Coaching institute with admin panel</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Job portal or classifieds</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>School/college website with login system</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Custom software or dashboard</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Blog or news portal</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Feedback or complaint management system</li>
+              <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Multi-user content-driven platforms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="section max-w-full p-0">
+        <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Meet Our Team</h2>
+        <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Our passionate team brings together creativity, technology, and local expertise to help your business succeed online.</p>
+            <p class="text-base text-gray-500 dark:text-gray-400">We are designers, developers, and digital strategists dedicated to delivering real results for Nagpur businesses.</p>
+        </div>
+        <div class="team-grid">
+            <!-- Team Member 1 -->
+            <div class="team-member fade-in bg-white/90 dark:bg-gray-900/90">
+            <img class="team-avatar object-cover w-24 h-24 rounded-full shadow-lg border-4 border-indigo-200 mb-4" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Sharma">
+            <h3 class="font-bold text-lg mt-2 mb-1 text-gray-900 dark:text-white">Rishabh Khandekar</h3>
+            <p class="text-indigo-500 dark:text-indigo-400 font-semibold mb-2">Co-founder & Lead Strategist</p>
+            <p class="text-gray-700 dark:text-gray-300">5+ years of experience building dynamic, scalable web apps — passionate about helping local businesses grow with smart digital solutions.</p>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="team-member fade-in bg-white/90 dark:bg-gray-900/90">
+            <img class="team-avatar object-cover w-24 h-24 rounded-full shadow-lg border-4 border-pink-200 mb-4" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Deshmukh">
+            <h3 class="font-bold text-lg mt-2 mb-1 text-gray-900 dark:text-white">Aashish Parage</h3>
+            <p class="text-pink-500 dark:text-pink-400 font-semibold mb-2">Co-founder & Marketing Strategist</p>
+            <p class="text-gray-700 dark:text-gray-300">Driving growth through strategic planning, market insight, and creative campaigns. Focus on building brand presence and generating quality leads.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section p-0 m-0 max-w-full">
+        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
+          <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Contact Us</h2>
+          <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Ready to grow your business? Reach out to us for a free consultation or any questions.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <!-- Contact Info -->
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-gray-100 dark:border-gray-700">
+              <h3 class="font-bold text-2xl mb-4 text-gray-900 dark:text-white flex items-center"><i class="fas fa-handshake text-indigo-500 mr-3"></i> Get in Touch</h3>
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-phone text-indigo-500 mr-3"></i> <span class="font-semibold mr-2">Phone:</span> +91 98765 43210</div>
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fab fa-whatsapp text-green-500 mr-3"></i> <span class="font-semibold mr-2">WhatsApp:</span> +91 98765 43210</div>
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-envelope text-pink-400 mr-3"></i> <span class="font-semibold mr-2">Email:</span> info@nagpurweb.com</div>
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-map-marker-alt text-green-400 mr-3"></i> <span class="font-semibold mr-2">Address:</span> Nagpur, Maharashtra</div>
+              </div>
+              <div class="mt-3 mb-8">
+                <h4 class="font-semibold text-lg mb-1 text-gray-900 dark:text-white">Business Hours</h4>
+                <p class="text-gray-600 dark:text-gray-400">Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                <p class="text-gray-600 dark:text-gray-400">Sunday: 10:00 AM - 6:00 PM</p>
+              </div>
+              <div class="overflow-hidden rounded-xl shadow-lg flex-1">
+                <div class="h-full min-h-[260px] flex-1">
+                  <iframe
+                    src="https://www.google.com/maps?q=Nagpur,+Maharashtra,+India&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0;min-height:260px;min-width:100%;height:100%;display:block"
+                    loading="lazy">
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            <!-- Contact Form -->
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10 border border-gray-100 dark:border-gray-700 flex flex-col justify-between">
+              <h3 class="font-bold text-2xl mb-6 text-gray-900 dark:text-white flex items-center"><i class="fas fa-paper-plane text-pink-500 mr-3"></i> Send us a Message</h3>
+              <form id="contactForm" class="space-y-6 flex flex-col h-full">
+                <div>
+                  <label for="name" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Name *</label>
+                  <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Name">
+                </div>
+                <div>
+                  <label for="phone" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Phone *</label>
+                  <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Phone Number">
+                </div>
+                <div>
+                  <label for="email" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Email</label>
+                  <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Email (optional)">
+                </div>
+                <div>
+                  <label for="business" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Business Type</label>
+                  <input type="text" id="business" name="business" class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="e.g., Tuition, Salon, Shop">
+                </div>
+                <div class="flex-1 flex flex-col">
+                  <label for="message" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Message *</label>
+                  <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition resize-none" placeholder="Tell us about your business and website requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full mt-4 text-center flex items-center justify-center"><i class="fas fa-paper-plane mr-2"></i>Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer mt-0">
+        <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-8 items-start text-left">
+            <!-- Brand & Social -->
+            <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-2 mb-1" style="background: rgb(31 41 55 / 0.8); padding: 0.5rem 1.1rem; border-radius: 0.75rem; box-shadow: 0 2px 12px rgba(0,0,0,0.13);">
+                <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="w-11 shadow-lg" />
+                <span class="font-bold text-lg md:text-lg tracking-widest text-white" style="letter-spacing:2px;">GrowBiz Web Solutions</span>
+            </div>
+                <p class="text-white text-base">Helping Nagpur local businesses grow online with professional, powerful and affordable web solutions.</p>
+                <div class="flex gap-2 mt-2">
+                    <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition text-xl text-white shadow"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 transition text-xl text-white shadow"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 transition text-xl text-white shadow"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 hover:from-green-500 hover:to-teal-500 transition text-xl text-white shadow"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:underline text-white transition">Home</a></li>
+                    <li><a href="#services" class="hover:underline text-white transition">Services</a></li>
+                    <li><a href="#portfolio" class="hover:underline text-white transition">Portfolio</a></li>
+                    <li><a href="#about" class="hover:underline text-white transition">About</a></li>
+                    <li><a href="#contact" class="hover:underline text-white transition">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Services -->
+            <div>
+                <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Services</h4>
+                <ul class="space-y-2">
+                    <li class="text-white">Website Design</li>
+                    <li class="text-white">Google Business Listing</li>
+                    <li class="text-white">SEO Optimization</li>
+                    <li class="text-white">Logo Design</li>
+                    <li class="text-white">WhatsApp Integration</li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Contact Info</h4>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2 text-white"><i class="fas fa-phone-alt text-green-400"></i> <span class="font-semibold text-green-300">+91 98765 43210</span></li>
+                    <li class="flex items-center gap-2 text-white"><i class="fas fa-envelope text-pink-400"></i> <span class="font-semibold text-pink-200">info@nagpurweb.com</span></li>
+                    <li class="flex items-center gap-2 text-white"><i class="fas fa-map-marker-alt text-yellow-300"></i> <span class="font-semibold text-yellow-200">Nagpur, Maharashtra</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/20 mt-8 pt-4 text-center">
+            <p class="text-white text-sm">&copy; 2025 GrowBiz Web Solutions. All rights reserved. | Designed with <span class="text-pink-300">❤️</span> for local businesses</p>
+        </div>
+    </footer>
+    <!-- Theme toggle button -->
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.className = 'fas fa-sun';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('.section, .advantage-card, .plan-card, .service-card, .portfolio-item, .team-member').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hi! I'm ${name} and I'm interested in your website services.\n\nPhone: ${phone}\n\nMessage: ${message}`;
+            const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+
+        // Add floating animation to hero background with mobile limit
+        const hero = document.querySelector('.hero');
+        let ticking = false;
+
+        function updateHeroBackground() {
+            const scrolled = window.pageYOffset;
+            let rate = 0;
+            if (window.innerWidth <= 575.98) {
+                // On mobile: only start parallax when 'Why Your Business' enters viewport from bottom
+                const whyBusiness = document.getElementById('why-business');
+                if (whyBusiness) {
+                    const whyBusinessRect = whyBusiness.getBoundingClientRect();
+                    // When the top of 'Why Your Business' is below the viewport, keep attached
+                    if (whyBusinessRect.top > window.innerHeight) {
+                        rate = 0;
+                    } else {
+                        // Start parallax as soon as 'Why Your Business' enters viewport from bottom
+                        // The further it comes in, the more parallax, capped at -150px
+                        const visiblePx = window.innerHeight - whyBusinessRect.top;
+                        rate = Math.max(-visiblePx * 0.5, -150);
+                    }
+                }
+            } else {
+                // Desktop: normal parallax
+                rate = scrolled * -0.5;
+            }
+            hero.style.transform = `translateY(${rate}px)`;
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeroBackground);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Navbar color stays constant (no color change on scroll)
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple effect CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: rippleEffect 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect after page load
+        // window.addEventListener('load', function() {
+        //     const heroTitle = document.querySelector('.hero h2');
+        //     const originalText = heroTitle.textContent;
+        //     setTimeout(() => {
+        //         typeWriter(heroTitle, originalText, 80);
+        //     }, 1000);
+        // });
+
+    </script>
+    <!-- Theme toggle button -->
+    <script>
+    // Navbar blur only when not at the top
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 0) {
+        navbar.classList.add('navbar-blur');
+        } else {
+        navbar.classList.remove('navbar-blur');
+        }
+    });
+    </script>
+    <!--  -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.particlesJS) {
+        particlesJS('particles-js', {
+            particles: {
+            number: { value: 80, density: { enable: true, value_area: 1000 } },
+            color: { value: ["#f472b6", "#ec4899", "#e11d48", "#f9a8d4"] }, // pink gradient shades
+            opacity: { value: 0.7, random: false },
+            size: { value: 5.5, random: true },
+            line_linked: { enable: true, distance: 130, color: "#ec4899", opacity: 0.5, width: 2.2 },
+            move: { enable: true, speed: 1.1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: { detect_on: 'canvas', events: { onhover: { enable: false }, onclick: { enable: false } } },
+            retina_detect: true
+        });
+        }
+    });
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/687e0f8dd69815191a7c5877/1j0m6pgm8';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+  </body>
+</html> 
+
+<!-- New Points
+
+(have some faith)
+
+1] hero section responsive - Done
+2] header responsive and menu hambergur - Done
+3] form section - Formsubmit.co - pending
+4] review the content - Done
+5] tawk.to - Done
+6] footer logo - Done
+7] social media links creating and linking - pending
+8] pricing plans edits - discount, suitable for section in cards, free tags - Done
+9] WhatsApp button integration - pending
+
+1] business card
+2]  -->
+
+<!-- 
+✅ Static Website – Suitable for:
+Business informational site
+
+Promotional or marketing site
+
+Portfolio or personal branding site
+
+Event or invitation website
+
+Restaurant/menu display site
+
+Local service provider site (like plumber, electrician, yoga trainer)
+
+NGO or trust info site
+
+Simple landing pages
+
+🚀 Dynamic Website – Suitable for:
+E-commerce store
+
+Real estate listing site
+
+Coaching institute with admin panel
+
+Job portal or classifieds
+
+School/college website with login system
+
+Custom software or dashboard
+
+Blog or news portal
+
+Feedback or complaint management system
+
+Multi-user content-driven platforms -->

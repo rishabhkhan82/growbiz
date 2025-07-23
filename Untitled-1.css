@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NagpurWeb - Websites for Local Businesses</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-light: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-light: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-light: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-light: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --bg-light: white;
+            --text-light: #333;
+            --card-light: rgba(255, 255, 255, 0.9);
+            
+            --primary-dark: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+            --secondary-dark: linear-gradient(135deg, #833ab4 0%, #fd1d1d 100%);
+            --accent-dark: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
+            --success-dark: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            --bg-dark: linear-gradient(135deg, #0c0c0c 0%, #434343 100%);
+            --text-dark: #fff;
+            --card-dark: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        body.dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .dark .navbar {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.05rem;
+            font-family: 'Pacifico', 'Brush Script MT', cursive;
+            color: #222;
+            font-weight: 400;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #764ba2 0%, #43e97b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-radius: 0;
+            padding: 0;
+            display: inline-block;
+            line-height: 44px;
+        }
+        .dark .logo {
+            background: linear-gradient(90deg, #fff 0%, #a8e6cf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--primary-light);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--primary-light);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:0.1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:0.1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23grad1)"/></svg>') center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            animation: floatBg 10s ease-in-out infinite;
+        }
+
+        @keyframes floatBg {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideUp 1s ease-out;
+        }
+
+        .dark .hero h1 {
+            background: var(--primary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            animation: slideUp 1s ease-out 0.4s both;
+        }
+
+        .trust-line {
+            background: var(--success-light);
+            color: black;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            margin: 2rem 0;
+            font-weight: 400;
+            animation: slideUp 1s ease-out 0.6s both;
+            display: inline-block;
+        }
+
+        .dark .trust-line {
+            background: var(--success-dark);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 1s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--secondary-light);
+            color: white;
+        }
+
+        .btn-accent {
+            background: var(--accent-light);
+            color: white;
+        }
+
+        .dark .btn-primary {
+            background: var(--primary-dark);
+        }
+
+        .dark .btn-secondary {
+            background: var(--secondary-dark);
+        }
+
+        .dark .btn-accent {
+            background: var(--accent-dark);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark .section-title {
+            background: var(--primary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .why-website {
+            background: var(--card-light);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .dark .why-website {
+            background: var(--card-dark);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .advantage-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dark .advantage-card {
+            background: var(--card-dark);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .advantage-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: var(--primary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .dark .advantage-icon {
+            background: var(--primary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .plan-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .plan-card {
+            background: var(--card-dark);
+        }
+
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-light);
+        }
+
+        .dark .plan-card::before {
+            background: var(--primary-dark);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dark .service-card {
+            background: var(--card-dark);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--secondary-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dark .service-icon {
+            background: var(--secondary-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .portfolio-item {
+            background: var(--card-light);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dark .portfolio-item {
+            background: var(--card-dark);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .dark .portfolio-image {
+            background: var(--accent-dark);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-member {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dark .team-member {
+            background: var(--card-dark);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .dark .team-avatar {
+            background: var(--primary-dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .contact-info {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dark .contact-info {
+            background: var(--card-dark);
+        }
+
+        .contact-form {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dark .contact-form {
+            background: var(--card-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer {
+            background: var(--primary-light);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .dark .footer {
+            background: var(--primary-dark);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-3px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex;align-items: center;">
+                <img src="./website.gif" width="50" style="border-radius: 8px;" /> <span style="padding-left: 8px;">NG-Web-Solutions</span>
+            </div>
+            <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <!-- <h1>Websites for Nagpur Local Businesses</h1> -->
+            <h2>Build Your Digital Identity Today</h2>
+            <p>We help local businesses in Nagpur get online with powerful, affordable websites <br/> designed to increase trust, build the brands <br/>and engage customers.</p>
+            <div class="trust-line">
+                <!-- <i class="fas fa-gift"></i> -->
+                 <div style="display: flex;">
+                     <img src="./open-gift.gif" width="50" style="border-radius: 8px;" />
+                     <div>
+                         Get a free demo at your doorstep - at no cost, no pressure. Just call or WhatsApp us now to discuss your project!
+                     </div>
+                 </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="tel:+919876543210" class="btn btn-primary">
+                    <i class="fas fa-phone"></i>
+                    Call Now
+                </a>
+                <a href="https://wa.me/919876543210" class="btn btn-secondary">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp Us
+                </a>
+                <a href="#contact" class="btn btn-accent">
+                    <i class="fas fa-calendar"></i>
+                    Request Demo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section">
+        <h2 class="section-title">Why Your Business Needs a Website</h2>
+        <div class="why-website fade-in">
+            <p>In today's digital-first world, most people search online before stepping into a store or calling a service. If you don't have a website, you're already missing customers.</p>
+            <p>Whether you're a salon owner in Sitabuldi, a tuition teacher in Dharampeth, or a shopkeeper in Itwari - having a website builds trust, gives information, and brings in business.</p>
+        </div>
+
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Available 24/7</h3>
+                <p>Unlike your shop, your website works round the clock</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fab fa-google"></i>
+                </div>
+                <h3>Appears on Google</h3>
+                <p>Get found by customers searching for your services</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Builds Customer Trust</h3>
+                <p>Professional appearance increases credibility</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Increases Sales</h3>
+                <p>More inquiries and bookings through online presence</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Helps in Branding</h3>
+                <p>Showcase your brand identity effectively</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Showcase Reviews</h3>
+                <p>Display testimonials, images, and contact details</p>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="section" style="background: var(--primary-light); border-radius: 30px; box-shadow: 0 10px 40px rgba(102,126,234,0.12); padding: 4rem 2rem; margin-bottom: 3rem;">
+        <h2 class="section-title" style="background: none; color: #fff; font-size: 2.8rem; margin-bottom: 2rem; letter-spacing: 1px;">Why Your Business Needs a Website</h2>
+        <div class="fade-in" style="max-width: 700px; margin: 0 auto 2.5rem auto; background: rgba(255,255,255,0.12); border-radius: 18px; padding: 2rem 2.5rem; box-shadow: 0 4px 24px rgba(76,172,254,0.08);">
+            <p style="font-size: 1.25rem; color: #fff; font-weight: 400; margin-bottom: 1rem;">Most customers search online before visiting a business. If you don't have a website, you're invisible to them.</p>
+            <p style="font-size: 1.1rem; color: #e0e0e0; font-weight: 300;">Whether you're a salon owner, tuition teacher, or shopkeeper in Nagpur, a website builds trust, gives information, and brings in new customers.</p>
+        </div>
+
+        <div class="modern-advantages-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+            <div class="modern-advantage-card fade-in" style="flex: 1 1 220px; min-width: 220px; max-width: 300px; background: linear-gradient(135deg, #764ba2 0%, #43e97b 100%); color: #fff; border-radius: 18px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(76,172,254,0.10); position: relative;">
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-clock" style="font-size: 2.5rem; background: linear-gradient(90deg,#43e97b,#764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;filter: drop-shadow(0 0 2px #fff) drop-shadow(0 0 6px #fff);"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Available 24/7</h3>
+                <p style="font-size: 1rem; font-weight: 300;">Your website works round the clock, even when you don't.</p>
+            </div>
+            <div class="modern-advantage-card fade-in" style="flex: 1 1 220px; min-width: 220px; max-width: 300px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: #fff; border-radius: 18px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(76,172,254,0.10); position: relative;">
+                <div style="margin-bottom: 1rem;">
+                    <i class="fab fa-google" style="font-size: 2.5rem; background: linear-gradient(90deg,#f093fb,#f5576c); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Appears on Google</h3>
+                <p style="font-size: 1rem; font-weight: 300;">Get found by customers searching for your services.</p>
+            </div>
+            <div class="modern-advantage-card fade-in" style="flex: 1 1 220px; min-width: 220px; max-width: 300px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #fff; border-radius: 18px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(76,172,254,0.10); position: relative;">
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-shield-alt" style="font-size: 2.5rem; background: linear-gradient(90deg,#4facfe,#00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Builds Customer Trust</h3>
+                <p style="font-size: 1rem; font-weight: 300;">Professional appearance increases credibility.</p>
+            </div>
+            <div class="modern-advantage-card fade-in" style="flex: 1 1 220px; min-width: 220px; max-width: 300px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #fff; border-radius: 18px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(76,172,254,0.10); position: relative;">
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-chart-line" style="font-size: 2.5rem; background: linear-gradient(90deg,#43e97b,#38f9d7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Increases Sales</h3>
+                <p style="font-size: 1rem; font-weight: 300;">More inquiries and bookings through online presence.</p>
+            </div>
+            <div class="modern-advantage-card fade-in" style="flex: 1 1 220px; min-width: 220px; max-width: 300px; background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 100%); color: #fff; border-radius: 18px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(76,172,254,0.10); position: relative;">
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-bullhorn" style="font-size: 2.5rem; background: linear-gradient(90deg,#833ab4,#fd1d1d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Helps in Branding</h3>
+                <p style="font-size: 1rem; font-weight: 300;">Showcase your brand identity effectively.</p>
+            </div>
+            <div class="modern-advantage-card fade-in" style="flex: 1 1 220px; min-width: 220px; max-width: 300px; background: linear-gradient(135deg, #f093fb 0%, #43e97b 100%); color: #fff; border-radius: 18px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px rgba(76,172,254,0.10); position: relative;">
+                <div style="margin-bottom: 1rem;">
+                    <i class="fas fa-star" style="font-size: 2.5rem; background: linear-gradient(90deg,#f093fb,#43e97b); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Showcase Reviews</h3>
+                <p style="font-size: 1rem; font-weight: 300;">Display testimonials, images, and contact details.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Website Plans</h2>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h3>Static Website</h3>
+                <p><strong>Budget-friendly</strong></p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>3-5 pages</li>
+                    <li>Perfect for showcasing info</li>
+                    <li>Loads fast</li>
+                    <li>No backend or login needed</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Request Quote</a>
+            </div>
+            <div class="plan-card">
+                <h3>Dynamic Website</h3>
+                <p><strong>Advanced Features</strong></p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Admin panel or form handling</li>
+                    <li>Bookings, payments, user login</li>
+                    <li>Good for tuition, hotels, services</li>
+                    <li>Database integration</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">How We Help You Grow</h2>
+        <div class="why-website fade-in">
+            <p>We understand Nagpur's local business challenges. We don't just make websites, we build digital strategies for local reach.</p>
+        </div>
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Domain + Hosting Setup</h3>
+                <p>Complete technical setup handled for you</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>SEO Basics</h3>
+                <p>Get found on Google with proper optimization</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp Integration</h3>
+                <p>Direct customer communication setup</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile-First Design</h3>
+                <p>Fast loading on all devices</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Website Design</h3>
+                <p>Static & Dynamic websites tailored for your business</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Google Business Listing</h3>
+                <p>Get found on Google Maps and local searches</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Hosting & Domain</h3>
+                <p>Complete technical setup and maintenance</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Logo Design</h3>
+                <p>Professional brand identity creation</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>SEO Basics</h3>
+                <p>Search engine optimization for better visibility</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Integration Services</h3>
+                <p>WhatsApp and contact form integration</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2 class="section-title">Our Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-graduation-cap" style="font-size: 3rem;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>XYZ Tuition Classes</h3>
+                    <p><strong>Location:</strong> Dharampeth, Nagpur</p>
+                    <p><strong>Result:</strong> 60% increase in student inquiries after website launch</p>
+                    <p>Complete website with online admission forms, fee structure, and teacher profiles.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-cut" style="font-size: 3rem;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Beauty Salon</h3>
+                    <p><strong>Location:</strong> Sitabuldi, Nagpur</p>
+                    <p><strong>Result:</strong> 45% more bookings through online appointment system</p>
+                    <p>Modern website with service gallery, online booking, and customer reviews.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-shopping-bag" style="font-size: 3rem;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Local Retailer</h3>
+                    <p><strong>Location:</strong> Itwari, Nagpur</p>
+                    <p><strong>Result:</strong> 30% increase in customer trust and foot traffic</p>
+                    <p>Professional showcase website with product catalog and WhatsApp integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Our Team</h2>
+        <div class="why-website fade-in">
+            <p>We're a small team based in Nagpur, passionate about helping local businesses grow online. With years of experience in web development and digital marketing, we understand the unique challenges faced by Nagpur's local businesses.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Rahul Sharma</h3>
+                <p><strong>Lead Developer</strong></p>
+                <p>5+ years experience in web development. Specializes in creating fast, mobile-friendly websites for local businesses.</p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Priya Patel</h3>
+                <p><strong>Design & Marketing</strong></p>
+                <p>Expert in UI/UX design and digital marketing. Helps businesses build strong online presence and brand identity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div style="margin: 2rem 0;">
+                    <p style="margin: 1rem 0; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-phone" style="color: #667eea;"></i>
+                        <strong>Phone:</strong> +91 98765 43210
+                    </p>
+                    <p style="margin: 1rem 0; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                        <strong>WhatsApp:</strong> +91 98765 43210
+                    </p>
+                    <p style="margin: 1rem 0; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-envelope" style="color: #f093fb;"></i>
+                        <strong>Email:</strong> info@nagpurweb.com
+                    </p>
+                    <p style="margin: 1rem 0; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-map-marker-alt" style="color: #43e97b;"></i>
+                        <strong>Address:</strong> Nagpur, Maharashtra
+                    </p>
+                </div>
+                <div style="margin: 2rem 0;">
+                    <h4>Business Hours</h4>
+                    <p>Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                    <p>Sunday: 10:00 AM - 6:00 PM</p>
+                </div>
+                <div style="margin: 2rem 0;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119040.05176398331!2d78.99010584335939!3d21.161184900000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x19b37d06d0bb3e2b!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1642678901234!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="200" 
+                        style="border:0; border-radius: 10px;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Business Type</label>
+                        <input type="text" id="business" name="business" placeholder="e.g., Tuition, Salon, Shop">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell us about your business and website requirements..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>NagpurWeb</h3>
+                <p>Helping Nagpur businesses grow online with professional, affordable websites.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#home">Home</a></p>
+                <p><a href="#services">Services</a></p>
+                <p><a href="#portfolio">Portfolio</a></p>
+                <p><a href="#about">About</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p>Website Design</p>
+                <p>Google Business Listing</p>
+                <p>SEO Optimization</p>
+                <p>Logo Design</p>
+                <p>WhatsApp Integration</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> info@nagpurweb.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nagpur, Maharashtra</p>
+            </div>
+        </div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
+            <p>&copy; 2025 NagpurWeb. All rights reserved. | Designed with ❤️ for Nagpur businesses</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeToggle.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.className = 'fas fa-sun';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards
+        document.querySelectorAll('.section, .advantage-card, .plan-card, .service-card, .portfolio-item, .team-member').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hi! I'm ${name} and I'm interested in your website services.\n\nPhone: ${phone}\n\nMessage: ${message}`;
+            const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+
+        // Add floating animation to hero background
+        const hero = document.querySelector('.hero');
+        let ticking = false;
+
+        function updateHeroBackground() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeroBackground);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+
+        // Add navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = document.body.classList.contains('dark') ? 
+                    'rgba(0, 0, 0, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.style.background = document.body.classList.contains('dark') ? 
+                    'rgba(0, 0, 0, 0.9)' : 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple effect CSS
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: rippleEffect 0.6s ease-out;
+                pointer-events: none;
+            }
+            
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect after page load
+        // window.addEventListener('load', function() {
+        //     const heroTitle = document.querySelector('.hero h2');
+        //     const originalText = heroTitle.textContent;
+        //     setTimeout(() => {
+        //         typeWriter(heroTitle, originalText, 80);
+        //     }, 1000);
+        // });
+    </script>
+</body>
+</html>
