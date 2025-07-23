@@ -945,32 +945,63 @@
             }
         }
     </style>
+        <!-- Mobile hero SVG and height fix -->
+    <style>
+        /* Mobile header responsive styles */
+        @media (max-width: 575.98px) {
+            .navbar .logo {
+                display: flex !important;
+                align-items: center !important;
+            }
+            .navbar .logo img {
+                display: block !important;
+            }
+            #navbarMenu {
+                display: none !important;
+            }
+            #mobileMenuBtn {
+                display: flex !important;
+            }
+            #mobileDrawer {
+                display: block !important;
+            }
+            /* Only in mobile: fix navbar and give it a solid background */
+            .navbar {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #111827 !important;
+                z-index: 50;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+            }
+            #home.hero {
+                padding-top: 56px !important;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .hero-inner-flex {
+                flex-direction: column-reverse !important;
+            }
+            #home.hero {
+                min-height: auto !important;
+                height: auto !important;
+            }
+            .hero-svg-desktop {
+                display: none !important;
+            }
+            .hero-svg-mobile {
+                display: flex !important;
+            }
+        }
+        @media (min-width: 576px) {
+            .hero-svg-mobile {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); position: relative;">
-    <script>
-    // --- HERO PARALLAX EFFECT WITH MOBILE CAP ---
-    document.addEventListener('DOMContentLoaded', function() {
-      // Set theme to light by default
-      document.body.classList.remove('dark');
-      var hero = document.getElementById('home');
-      if (!hero) return;
-      function isMobile() {
-        return window.innerWidth <= 575.98;
-      }
-      function onScroll() {
-        var scrollY = window.scrollY || window.pageYOffset;
-        var translateY = -scrollY * 0.4;
-        if (isMobile()) {
-          // Cap the translateY to a maximum of -150px on mobile
-          translateY = Math.max(translateY, -150);
-        }
-        hero.style.transform = `translateY(${translateY}px)`;
-      }
-      window.addEventListener('scroll', onScroll);
-      window.addEventListener('resize', onScroll);
-      onScroll();
-    });
-    </script>
     <!-- Particles.js container -->
     <div id="particles-js" style="position:fixed;z-index:0;top:0;left:0;width:100vw;height:100vh;pointer-events:none;"></div>
     <nav class="navbar w-full z-50 transition-all duration-300" id="mainNavbar">
@@ -978,7 +1009,7 @@
             <div class="flex-1 flex items-center gap-2 select-none min-w-0">
             <span class="logo flex items-center gap-1">
                 <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="hidden md:block w-8 h-8 shadow-lg" />
-                <span class="company-logo-text">GrowBiz Web Solutions Pvt Ltd</span>
+                <span class="company-logo-text">GrowBiz Web Solutions</span>
             </span>
             </div>
             <div class="flex-[2] flex items-center justify-end min-w-0 navbar-right">
@@ -1065,110 +1096,6 @@
         </div>
         </ul>
     </div>
-    <script>
-    // Mobile drawer menu logic with modern animated hamburger
-    document.addEventListener('DOMContentLoaded', function() {
-      var mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      var mobileDrawer = document.getElementById('mobileDrawer');
-      var closeDrawerBtn = document.getElementById('closeDrawerBtn');
-      function openDrawer() {
-        mobileDrawer.style.transform = 'translateX(0)';
-        // Removed hamburger-open class for no animation
-      }
-      function closeDrawer() {
-        mobileDrawer.style.transform = 'translateX(-100%)';
-        // Removed hamburger-open class for no animation
-      }
-      if (mobileMenuBtn && mobileDrawer) {
-        mobileMenuBtn.addEventListener('click', function() {
-          if (mobileDrawer.style.transform === 'translateX(0)') {
-            closeDrawer();
-          } else {
-            openDrawer();
-          }
-        });
-      }
-      if (closeDrawerBtn && mobileDrawer) {
-        closeDrawerBtn.addEventListener('click', closeDrawer);
-      }
-      // Close drawer on nav link click (optional)
-      mobileDrawer.querySelectorAll('a.nav-link').forEach(function(link) {
-        link.addEventListener('click', closeDrawer);
-      });
-    });
-    // Robust Scrollspy: highlight menu based on section top vs navbar bottom
-    document.addEventListener('DOMContentLoaded', function() {
-    // Separate navLinks for desktop and mobile
-    const desktopNavLinks = Array.from(document.querySelectorAll('#navbarMenu .nav-link'));
-    const mobileNavLinks = Array.from(document.querySelectorAll('#mobileDrawer .nav-link'));
-    const sectionIds = ['home', 'services', 'portfolio', 'about', 'contact'];
-    const sectionEls = sectionIds.map(id => document.getElementById(id));
-
-    function onScrollSpy() {
-        const navbar = document.getElementById('mainNavbar');
-        const navbarRect = navbar ? navbar.getBoundingClientRect() : { bottom: 0 };
-        const navbarBottom = navbarRect.bottom;
-        let activeIdx = 0;
-        for (let i = 0; i < sectionEls.length; i++) {
-            const section = sectionEls[i];
-            if (!section) continue;
-            const rect = section.getBoundingClientRect();
-            if (rect.top < navbarBottom) {
-                activeIdx = i;
-            }
-        }
-        // Update desktop nav
-        desktopNavLinks.forEach((link, idx) => {
-            if (idx === activeIdx) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-        // Update mobile drawer nav
-        mobileNavLinks.forEach((link, idx) => {
-            if (idx === activeIdx) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', onScrollSpy);
-    window.addEventListener('resize', onScrollSpy);
-    onScrollSpy();
-    });
-    </script>
-    <script>
-    // Navbar background transition on scroll
-    window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('mainNavbar');
-        if (window.scrollY > 10) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Hide particles when footer is in view using Intersection Observer
-    function hideParticlesOnFooter() {
-        var particles = document.getElementById('particles-js');
-        var footer = document.querySelector('.footer');
-        if (!particles || !footer) return;
-        var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-            particles.style.display = 'none';
-            } else {
-            particles.style.display = '';
-            }
-        });
-        }, { threshold: 0, rootMargin: '0px' });
-        observer.observe(footer);
-    }
-    window.addEventListener('DOMContentLoaded', hideParticlesOnFooter);
-    </script>
     <!-- Hero Section -->
     <section id="home" class="hero w-full max-w-full p-0">
     <div class="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-[30px] bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 w-full max-w-full overflow-hidden shadow-xl hero-inner-flex" style="min-height: 100vh;">
@@ -1287,61 +1214,6 @@
     </div>
 
     </section>
-    <!-- Mobile hero SVG and height fix -->
-    <style>
-        /* Mobile header responsive styles */
-        @media (max-width: 575.98px) {
-            .navbar .logo {
-                display: flex !important;
-                align-items: center !important;
-            }
-            .navbar .logo img {
-                display: block !important;
-            }
-            #navbarMenu {
-                display: none !important;
-            }
-            #mobileMenuBtn {
-                display: flex !important;
-            }
-            #mobileDrawer {
-                display: block !important;
-            }
-            /* Only in mobile: fix navbar and give it a solid background */
-            .navbar {
-                position: fixed !important;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: #111827 !important;
-                z-index: 50;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.13);
-            }
-            #home.hero {
-                padding-top: 56px !important;
-            }
-        }
-        @media (max-width: 575.98px) {
-            .hero-inner-flex {
-                flex-direction: column-reverse !important;
-            }
-            #home.hero {
-                min-height: auto !important;
-                height: auto !important;
-            }
-            .hero-svg-desktop {
-                display: none !important;
-            }
-            .hero-svg-mobile {
-                display: flex !important;
-            }
-        }
-        @media (min-width: 576px) {
-            .hero-svg-mobile {
-                display: none !important;
-            }
-        }
-    </style>
     <!-- Why Your Business Needs a Website Section -->
     <section id="why-business" class="why-business section max-w-full p-0">
         <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
@@ -1762,6 +1634,135 @@
             <p class="text-white text-sm">&copy; 2025 GrowBiz Web Solutions. All rights reserved. | Designed with <span class="text-pink-300">❤️</span> for local businesses</p>
         </div>
     </footer>
+
+    <script>
+    // --- HERO PARALLAX EFFECT WITH MOBILE CAP ---
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set theme to light by default
+      document.body.classList.remove('dark');
+      var hero = document.getElementById('home');
+      if (!hero) return;
+      function isMobile() {
+        return window.innerWidth <= 575.98;
+      }
+      function onScroll() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        var translateY = -scrollY * 0.4;
+        if (isMobile()) {
+          // Cap the translateY to a maximum of -150px on mobile
+          translateY = Math.max(translateY, -150);
+        }
+        hero.style.transform = `translateY(${translateY}px)`;
+      }
+      window.addEventListener('scroll', onScroll);
+      window.addEventListener('resize', onScroll);
+      onScroll();
+    });
+    </script>
+    <script>
+    // Mobile drawer menu logic with modern animated hamburger
+    document.addEventListener('DOMContentLoaded', function() {
+      var mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      var mobileDrawer = document.getElementById('mobileDrawer');
+      var closeDrawerBtn = document.getElementById('closeDrawerBtn');
+      function openDrawer() {
+        mobileDrawer.style.transform = 'translateX(0)';
+        // Removed hamburger-open class for no animation
+      }
+      function closeDrawer() {
+        mobileDrawer.style.transform = 'translateX(-100%)';
+        // Removed hamburger-open class for no animation
+      }
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', function() {
+          if (mobileDrawer.style.transform === 'translateX(0)') {
+            closeDrawer();
+          } else {
+            openDrawer();
+          }
+        });
+      }
+      if (closeDrawerBtn && mobileDrawer) {
+        closeDrawerBtn.addEventListener('click', closeDrawer);
+      }
+      // Close drawer on nav link click (optional)
+      mobileDrawer.querySelectorAll('a.nav-link').forEach(function(link) {
+        link.addEventListener('click', closeDrawer);
+      });
+    });
+    // Robust Scrollspy: highlight menu based on section top vs navbar bottom
+    document.addEventListener('DOMContentLoaded', function() {
+    // Separate navLinks for desktop and mobile
+    const desktopNavLinks = Array.from(document.querySelectorAll('#navbarMenu .nav-link'));
+    const mobileNavLinks = Array.from(document.querySelectorAll('#mobileDrawer .nav-link'));
+    const sectionIds = ['home', 'services', 'portfolio', 'about', 'contact'];
+    const sectionEls = sectionIds.map(id => document.getElementById(id));
+
+    function onScrollSpy() {
+        const navbar = document.getElementById('mainNavbar');
+        const navbarRect = navbar ? navbar.getBoundingClientRect() : { bottom: 0 };
+        const navbarBottom = navbarRect.bottom;
+        let activeIdx = 0;
+        for (let i = 0; i < sectionEls.length; i++) {
+            const section = sectionEls[i];
+            if (!section) continue;
+            const rect = section.getBoundingClientRect();
+            if (rect.top < navbarBottom) {
+                activeIdx = i;
+            }
+        }
+        // Update desktop nav
+        desktopNavLinks.forEach((link, idx) => {
+            if (idx === activeIdx) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        // Update mobile drawer nav
+        mobileNavLinks.forEach((link, idx) => {
+            if (idx === activeIdx) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScrollSpy);
+    window.addEventListener('resize', onScrollSpy);
+    onScrollSpy();
+    });
+    </script>
+    <script>
+    // Navbar background transition on scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('mainNavbar');
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Hide particles when footer is in view using Intersection Observer
+    function hideParticlesOnFooter() {
+        var particles = document.getElementById('particles-js');
+        var footer = document.querySelector('.footer');
+        if (!particles || !footer) return;
+        var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+            particles.style.display = 'none';
+            } else {
+            particles.style.display = '';
+            }
+        });
+        }, { threshold: 0, rootMargin: '0px' });
+        observer.observe(footer);
+    }
+    window.addEventListener('DOMContentLoaded', hideParticlesOnFooter);
+    </script>
     <!-- Theme toggle button -->
     <script>
         // Theme toggle functionality
@@ -1967,7 +1968,6 @@
         }
     });
     </script>
-    <!--  -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
