@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GrowBiz Web Solutions - Websites for Local Businesses</title>
+    <!-- Google Fonts: Segoe UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Tailwind CSS CDN -->
@@ -948,6 +950,8 @@
     <script>
     // --- HERO PARALLAX EFFECT WITH MOBILE CAP ---
     document.addEventListener('DOMContentLoaded', function() {
+      // Set theme to light by default
+      document.body.classList.remove('dark');
       var hero = document.getElementById('home');
       if (!hero) return;
       function isMobile() {
@@ -974,7 +978,7 @@
             <div class="flex-1 flex items-center gap-2 select-none min-w-0">
             <span class="logo flex items-center gap-1">
                 <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="hidden md:block w-8 h-8 shadow-lg" />
-                <span class="company-logo-text">GrowBiz Web Solutions Pvt Ltd</span>
+                <span class="company-logo-text">GrowBiz Web Solutions</span>
             </span>
             </div>
             <div class="flex-[2] flex items-center justify-end min-w-0 navbar-right">
