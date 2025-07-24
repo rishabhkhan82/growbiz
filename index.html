@@ -14,18 +14,27 @@
     <style>
         @font-face {
             font-family: 'Segoe UI';
-            src: url('./fonts/segoeui.woff2') format('woff2'),
-                 url('./fonts/segoeui.woff') format('woff'),
-                 url('./fonts/segoeui.ttf') format('truetype');
+            src: url('./segoeui.woff2') format('woff2'),
+                 url('./segoeui.woff') format('woff'),
+                 url('./segoeui.ttf') format('truetype');
             font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Segoe UI';
-            src: url('./fonts/segoeuib.woff2') format('woff2'),
-                 url('./fonts/segoeuib.woff') format('woff'),
-                 url('./fonts/segoeuib.ttf') format('truetype');
+            src: url('./segoeuisb.woff2') format('woff2'),
+                 url('./segoeuisb.woff') format('woff'),
+                 url('./segoeuisb.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Segoe UI';
+            src: url('./segoeuib.woff2') format('woff2'),
+                 url('./segoeuib.woff') format('woff'),
+                 url('./segoeuib.ttf') format('truetype');
             font-weight: 700;
             font-style: bold;
             font-display: swap;
@@ -251,7 +260,7 @@
             animation: slideUp 1s ease-out 0.8s both;
         }
         .btn {
-            padding: 1rem 2rem;
+            padding: 1rem 1.8rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
@@ -1032,11 +1041,11 @@
             </div>
             <div class="flex-[2] flex items-center justify-end min-w-0 navbar-right">
             <ul class="hidden md:flex items-center gap-1.5 lg:gap-3 xl:gap-4" id="navbarMenu">
-                <li><a href="#home" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-yellow-200 transition"><i class="fas fa-home mr-2" style="font-size: 0.95em;"></i>Home</a></li>
-                <li><a href="#services" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-pink-200 transition"><i class="fas fa-concierge-bell mr-2" style="font-size: 0.95em;"></i>Services</a></li>
-                <li><a href="#portfolio" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-indigo-200 transition"><i class="fas fa-briefcase mr-2" style="font-size: 0.95em;"></i>Portfolio</a></li>
-                <li><a href="#about" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-purple-200 transition"><i class="fas fa-user-friends mr-2" style="font-size: 0.95em;"></i>Our Team</a></li>
-                <li><a href="#contact" class="nav-link px-2 py-1.5 rounded-lg font-semibold text-gray-100 hover:bg-gray-800 hover:text-green-200 transition"><i class="fas fa-envelope mr-2" style="font-size: 0.95em;"></i>Contact</a></li>
+                <li><a href="#home" class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-yellow-200 transition"><i class="fas fa-home mr-2" style="font-size: 0.95em;"></i>Home</a></li>
+                <li><a href="#services" class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-pink-200 transition"><i class="fas fa-concierge-bell mr-2" style="font-size: 0.95em;"></i>Services</a></li>
+                <li><a href="#portfolio" class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-indigo-200 transition"><i class="fas fa-briefcase mr-2" style="font-size: 0.95em;"></i>Portfolio</a></li>
+                <li><a href="#about" class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-purple-200 transition"><i class="fas fa-user-friends mr-2" style="font-size: 0.95em;"></i>Our Team</a></li>
+                <li><a href="#contact" class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-green-200 transition"><i class="fas fa-envelope mr-2" style="font-size: 0.95em;"></i>Contact</a></li>
             </ul>
             <!-- Hamburger for mobile -->
             <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none ml-2" aria-label="Open menu">
@@ -1071,10 +1080,10 @@
     </nav>
     <!-- Mobile Drawer Menu -->
     <div id="mobileDrawer" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-[9999] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" style="will-change: transform;">
-        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-800 bg-[#18181b]" style="height: 60px;">
+        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white" style="height: 60px;">
             <span class="logo flex items-center gap-2">
                 <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="w-8 h-8" />
-                <span class="font-bold text-lg tracking-widest text-gray-100" style="letter-spacing:2px;">GBWS</span>
+                <span class="font-bold text-lg tracking-widest text-gray-900" style="letter-spacing:2px;">GrowBiz-WS</span>
             </span>
             <button id="closeDrawerBtn" class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl transition focus:outline-none ml-2" aria-label="Close menu">
                 <span class="hamburger-icon modern-hamburger" aria-hidden="true">
@@ -1096,11 +1105,11 @@
             </button>
         </div>
         <ul class="flex flex-col gap-2 p-6" style="padding-bottom: 120px;">
-            <li><a href="#home" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-home drawer-menu-icon" style="font-size: 0.95em;"></i>Home</a></li>
-            <li><a href="#services" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-concierge-bell drawer-menu-icon" style="font-size: 0.95em;"></i>Services</a></li>
-            <li><a href="#portfolio" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-briefcase drawer-menu-icon" style="font-size: 0.95em;"></i>Portfolio</a></li>
-            <li><a href="#about" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-user-friends drawer-menu-icon" style="font-size: 0.95em;"></i>Our Team</a></li>
-            <li><a href="#contact" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-envelope drawer-menu-icon" style="font-size: 0.95em;"></i>Contact</a></li>
+            <li><a href="#home" class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-home drawer-menu-icon" style="font-size: 0.95em;"></i>Home</a></li>
+            <li><a href="#services" class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-concierge-bell drawer-menu-icon" style="font-size: 0.95em;"></i>Services</a></li>
+            <li><a href="#portfolio" class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-briefcase drawer-menu-icon" style="font-size: 0.95em;"></i>Portfolio</a></li>
+            <li><a href="#about" class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-user-friends drawer-menu-icon" style="font-size: 0.95em;"></i>Our Team</a></li>
+            <li><a href="#contact" class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-envelope drawer-menu-icon" style="font-size: 0.95em;"></i>Contact</a></li>
         </ul>
         <!-- Drawer bottom section: Request Demo button and social links (mobile only) -->
         <div class="drawer-bottom-section px-6 pb-6 pt-2 flex flex-col gap-4" style="position: fixed; left: 0; bottom: 0; width: 100%; background: inherit; z-index: 10000; max-width: 16rem;">
@@ -1110,13 +1119,13 @@
                 <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 transition text-xl text-white shadow"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 hover:from-green-500 hover:to-teal-500 transition text-xl text-white shadow"><i class="fab fa-twitter"></i></a>
             </div>
-            <a href="tel:+919511721668" class="btn btn-accent w-full flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none drawer-demo-btn"><i class="fas fa-calendar"></i> Request Demo</a>
+            <a href="tel:9511721668" class="btn btn-accent w-full flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none drawer-demo-btn"><i class="fas fa-calendar"></i> Request Demo</a>
         </div>
         </ul>
     </div>
     <!-- Hero Section -->
     <section id="home" class="hero w-full max-w-full p-0">
-    <div class="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-[30px] bg-gradient-to-br from-indigo-50 via-white to-purple-50 w-full max-w-full overflow-hidden shadow-xl hero-inner-flex" style="min-height: 100vh;">
+    <div class="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-[30px] w-full max-w-full overflow-hidden shadow-xl hero-inner-flex" style="min-height: 100vh; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;">
         <!-- Left: Text Content -->
         <div class="flex-1 flex flex-col items-start justify-center z-10">
         <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold md:font-extrabold mb-4 md:mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg leading-relaxed animate-fadein text-center mx-auto">
@@ -1125,17 +1134,19 @@
             <span class="block">Today</span>
             <span class="block w-16 h-1 mt-3 mx-auto bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full opacity-80 animate-fadein"></span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-700 mb-6 font-medium max-w-xl animate-fadein">
-            We help local businesses in Nagpur get online with <span class="text-indigo-500 font-semibold">powerful</span>, <span class="text-pink-500 font-semibold">affordable</span> websites designed to increase trust, build brands, and engage customers.
-        </p>
+        <div class="flex items-center gap-4 mb-7 animate-fadein get-a-free">
+            <span class="text-base md:text-lg text-gray-400 font-medium demo-text">
+                We help local businesses in Nagpur get online with <span class="text-indigo-500 font-medium">powerful</span>, <span class="text-pink-500 font-medium">affordable</span> websites designed to increase trust, build brands, and engage customers.
+            </span>
+        </div>
         <div class="flex items-center gap-4 mb-7 animate-fadein get-a-free">
             <img src="./open-gift.gif" alt="Free Demo" class="w-14 h-14 rounded-lg shadow-lg border-2 border-pink-200 animate-bounce-slow demo-icon" />
-            <span class="text-base md:text-lg text-gray-800 font-semibold demo-text">Get a <span class="text-pink-500 font-bold">free demo</span> at your doorstep – no cost, no pressure. <br class="hidden md:block"/>Call or WhatsApp us now to discuss your project!</span>
+            <span class="text-base md:text-lg text-gray-400 font-medium demo-text">Get a <span class="text-pink-500 font-bold">free demo</span> at your doorstep – no cost, no pressure. <br class="hidden md:block"/>Call or WhatsApp us now to discuss your project!</span>
         </div>
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 w-full max-w-xl mx-auto animate-fadein ">
-            <a href="tel:+919511721668" class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="tel:9511721668" class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-phone"></i> Call Now</a>
             <a href="https://wa.me/917875845879" class="btn btn-secondary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-            <a href="tel:+919511721668" class="btn btn-accent w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-calendar"></i> Request Demo</a>
+            <a href="tel:9511721668" class="btn btn-accent w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-calendar"></i> Request Demo</a>
         </div>
         </div>
         <!-- Right: Accent Image/Shape -->
@@ -1279,8 +1290,8 @@
         <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">How We Help You Grow</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 mb-2 font-medium">We go beyond just building websites. Our mission is to empower your business with a complete digital presence that attracts, engages, and converts your ideal customers.</p>
-            <p class="text-base text-gray-500">Here’s how we deliver real growth for your business:</p>
+            <p class="text-lg md:text-xl text-gray-300 mb-2 font-medium">We go beyond just building websites. Our mission is to empower your business with a complete digital presence that attracts, engages, and converts your ideal customers.</p>
+            <p class="text-base text-gray-400">Here’s how we deliver real growth for your business:</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
@@ -1306,19 +1317,19 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
-            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-chart-line text-indigo-500 mr-2"></i> Ongoing Support & Updates</h4>
+            <h4 class="font-semibold text-lg mb-2 flex items-center text-gray-900"> <i class="fas fa-chart-line text-indigo-500 mr-2"></i> Ongoing Support & Updates</h4>
             <p class="text-gray-600">We don’t disappear after launch. Enjoy ongoing support, content updates, and technical help so your website always stays fresh and secure.</p>
             </div>
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
-            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-users text-green-500 mr-2"></i> Local Market Expertise</h4>
+            <h4 class="font-semibold text-lg mb-2 flex items-center text-gray-900"> <i class="fas fa-users text-green-500 mr-2"></i> Local Market Expertise</h4>
             <p class="text-gray-600">We understand the Nagpur market and what local customers expect. Our solutions are designed to help you stand out and win in your area.</p>
             </div>
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
-            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-shield-alt text-blue-500 mr-2"></i> Security & Privacy</h4>
+            <h4 class="font-semibold text-lg mb-2 flex items-center text-gray-900"> <i class="fas fa-shield-alt text-blue-500 mr-2"></i> Security & Privacy</h4>
             <p class="text-gray-600">Your site is protected with the latest security best practices, SSL, and privacy features to keep your business and customer data safe.</p>
             </div>
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
-            <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-rocket text-pink-500 mr-2"></i> Digital Growth Partner</h4>
+            <h4 class="font-semibold text-lg mb-2 flex items-center text-gray-900"> <i class="fas fa-rocket text-pink-500 mr-2"></i> Digital Growth Partner</h4>
             <p class="text-gray-600">We’re your long-term partner for digital growth—ready to help with new features, marketing, and advice as your business evolves.</p>
             </div>
         </div>
@@ -1327,7 +1338,11 @@
     <!-- Services Section -->
     <section id="services" class="section w-full max-w-full shadow-xl p-0 m-0" style="margin-bottom: 1px;">
       <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full">
-        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Our Services</h2>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Our Services</h2>
+        <div class="max-w-2xl mx-auto text-center mb-10">
+            <p class="text-lg md:text-xl text-gray-700 mb-2 font-medium">GrowBiz offers everything your business needs to succeed online, from stunning websites to digital marketing and local SEO.</p>
+            <p class="text-base text-gray-500">Our services are designed to help you attract more customers, build trust, and stand out from the competition—so you can focus on what you do best.</p>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
           <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-code"></i></div>
@@ -1372,32 +1387,32 @@
         <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Our Portfolio</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">See how we've helped Nagpur businesses grow with beautiful, high-performing websites.</p>
+            <p class="text-lg md:text-xl text-gray-300 mb-2 font-medium">See how we've helped Nagpur businesses grow with beautiful, high-performing websites.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <!-- Portfolio Card 1 -->
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-graduation-cap"></i></div>
             <h3 class="font-bold text-lg mb-2 text-gray-900">XYZ Tuition Classes</h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Dharampeth, Nagpur</p>
-            <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>60% increase in student inquiries</p>
-            <p class="text-gray-600 dark:text-gray-300">Complete website with online admission forms, fee structure, and teacher profiles.</p>
+            <p class="text-sm text-gray-500 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Dharampeth, Nagpur</p>
+            <p class="text-green-600 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>60% increase in student inquiries</p>
+            <p class="text-gray-600">Complete website with online admission forms, fee structure, and teacher profiles.</p>
             </div>
             <!-- Portfolio Card 2 -->
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-cut"></i></div>
             <h3 class="font-bold text-lg mb-2 text-gray-900">Beauty Salon</h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Sitabuldi, Nagpur</p>
-            <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>45% more bookings online</p>
-            <p class="text-gray-600 dark:text-gray-300">Modern website with service gallery, online booking, and customer reviews.</p>
+            <p class="text-sm text-gray-500 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Sitabuldi, Nagpur</p>
+            <p class="text-green-600 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>45% more bookings online</p>
+            <p class="text-gray-600">Modern website with service gallery, online booking, and customer reviews.</p>
             </div>
             <!-- Portfolio Card 3 -->
             <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-shopping-bag"></i></div>
             <h3 class="font-bold text-lg mb-2 text-gray-900">Local Retailer</h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Itwari, Nagpur</p>
-            <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>30% increase in trust & traffic</p>
-            <p class="text-gray-600 dark:text-gray-300">Professional showcase website with product catalog and WhatsApp integration.</p>
+            <p class="text-sm text-gray-500 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Itwari, Nagpur</p>
+            <p class="text-green-600 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>30% increase in trust & traffic</p>
+            <p class="text-gray-600">Professional showcase website with product catalog and WhatsApp integration.</p>
             </div>
         </div>
         </div>
@@ -1408,22 +1423,22 @@
         <!-- Pricing Heading -->
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Pricing Plan</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Choose the right website for your business. Transparent pricing, no hidden fees.</p>
+            <p class="text-lg md:text-xl text-gray-700 mb-2 font-medium">Choose the right website for your business. Transparent pricing, no hidden fees.</p>
         </div>
         <!-- Pricing Plans -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-12">
           <!-- Static Website Card -->
-          <div class="plan-card bg-white/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+          <div class="plan-card bg-white/80 backdrop-blur rounded-2xl shadow-xl py-10 px-6 md:px-10 flex flex-col items-center text-center border border-gray-100 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg"><i class="fas fa-file-code"></i></div>
-            <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white">Static Website</h3>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900">Static Website</h3>
             <div class="flex flex-col items-center mb-4">
               <div class="flex items-center gap-2 mb-1">
                 <span class="line-through text-gray-400 text-lg font-semibold">₹13,999</span>
-                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-0.5 rounded-full border border-pink-300">50% OFF</span>
+                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-0.5 rounded-full border border-pink-300">50% OFF - Launch Offer</span>
               </div>
-              <span class="text-3xl font-extrabold text-indigo-500 dark:text-indigo-400">₹6,999 <span class="text-base font-medium text-gray-500 dark:text-gray-400">/ year</span></span>
+              <span class="text-3xl font-extrabold text-indigo-500">₹6,999 <span class="text-base font-medium text-gray-500 dark:text-gray-400">/ year</span></span>
             </div>
-            <ul class="text-gray-600 dark:text-gray-300 text-left mb-6 space-y-2">
+            <ul class="text-gray-600 text-left mb-6 space-y-2">
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Single page web application (Home, About, Services, Contact, etc.)</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Mobile first, trending and modern design</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Fast loading & optimized performance</span></li>
@@ -1433,22 +1448,23 @@
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>Live chat integration</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>1 year hosting & domain</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>1 year support and maintenance</span></li>
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1"><span class="inline-block align-middle bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full border border-green-300 mr-1">FREE</span>100 E-mails/month on contact form</span></li>
             </ul>
             <a href="#contact" class="btn btn-primary w-full mt-auto justify-center"><i class="fas fa-calendar"></i> Request Demo</a>
           </div>
           <!-- Dynamic Website Card -->
-          <div class="plan-card bg-white/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+          <div class="plan-card bg-white/80 backdrop-blur rounded-2xl shadow-xl py-10 px-6 md:px-10 flex flex-col items-center text-center border border-gray-100 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 text-white text-3xl mb-5 shadow-lg"><i class="fas fa-database"></i></div>
-            <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white">Dynamic Website</h3>
+            <h3 class="font-bold text-2xl mb-2 text-gray-900">Dynamic Website</h3>
             <div class="flex flex-col items-center mb-4">
               <div class="flex items-center gap-2 mb-1">
                 <span class="line-through text-gray-400 text-lg font-semibold">₹49,998</span>
-                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-0.5 rounded-full border border-pink-300">60% OFF</span>
+                <span class="bg-pink-100 text-pink-600 text-xs font-bold px-2 py-0.5 rounded-full border border-pink-300">60% OFF - Launch Offer</span>
               </div>
-              <span class="text-3xl font-extrabold text-pink-500 dark:text-pink-400">₹19,999 <span class="text-base font-medium text-gray-500 dark:text-gray-400">/ year</span></span>
+              <span class="text-3xl font-extrabold text-pink-500">₹19,999 <span class="text-base font-medium text-gray-500 dark:text-gray-400">/ year</span></span>
             </div>
-            <ul class="text-gray-600 dark:text-gray-300 text-left mb-6 space-y-2">
-              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1 font-bold bg-orange-100 text-orange-600 rounded px-2 py-1 shadow-sm">Everything included in the Static Website Plan</span></li>
+            <ul class="text-gray-600 text-left mb-6 space-y-2">
+              <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-orange-500"></i></span><span class="flex-1 font-bold bg-orange-100 text-orange-600 rounded px-2 py-1 shadow-sm">Everything included in the Static Website Plan</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">User authentication & login system (register, login, forgot password, reset password)</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Advanced admin panel for content and role management</span></li>
               <li class="flex items-start gap-3"><span class="flex-shrink-0 w-6 flex justify-center pt-1"><i class="fas fa-check-circle text-green-500"></i></span><span class="flex-1">Unlimited pages with a blog or news section</span></li>
@@ -1469,13 +1485,13 @@
         <!-- Suitability Content -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
           <!-- Static Website Suitable For -->
-          <div class="suit-card bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-indigo-100 dark:border-indigo-700">
+          <div class="suit-card bg-gray-800/90 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border">
             <div class="flex items-center gap-3 mb-4">
               <span class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-2xl shadow-lg"><i class="fas fa-file-code"></i></span>
-              <h3 class="font-bold text-xl text-gray-900 dark:text-white">Static Website</h3>
+              <h3 class="font-bold text-xl text-white">Static Website</h3>
             </div>
             <h4 class="text-base font-semibold text-indigo-500 mb-2">Suitable For:</h4>
-            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+            <ul class="list-none space-y-2 text-gray-300">
               <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Business landing page</li>
               <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Promotional or marketing site</li>
               <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Portfolio site</li>
@@ -1487,13 +1503,13 @@
             </ul>
           </div>
           <!-- Dynamic Website Suitable For -->
-          <div class="suit-card bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-pink-100 dark:border-pink-700">
+          <div class="suit-card bg-gray-800/90 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border">
             <div class="flex items-center gap-3 mb-4">
               <span class="w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 text-white text-2xl shadow-lg"><i class="fas fa-database"></i></span>
-              <h3 class="font-bold text-xl text-gray-900 dark:text-white">Dynamic Website</h3>
+              <h3 class="font-bold text-xl text-white">Dynamic Website</h3>
             </div>
             <h4 class="text-base font-semibold text-pink-500 mb-2">Suitable For:</h4>
-            <ul class="list-none space-y-2 text-gray-700 dark:text-gray-300">
+            <ul class="list-none space-y-2 text-gray-300">
               <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>E-commerce store</li>
               <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Online order and booking site</li>
               <li class="flex items-start gap-2"><i class="fas fa-check-circle text-green-500 mt-1"></i>Real estate listing site</li>
@@ -1513,48 +1529,48 @@
         <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Meet Our Team</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Our passionate team brings together creativity, technology, and local expertise to help your business succeed online.</p>
-            <p class="text-base text-gray-500 dark:text-gray-400">We are designers, developers, and digital strategists dedicated to delivering real results for Nagpur businesses.</p>
+            <p class="text-lg md:text-xl text-gray-300 mb-2 font-medium">Our passionate team brings together creativity, technology, and local expertise to help your business succeed online.</p>
+            <p class="text-base text-gray-400">We are designers, developers, and digital strategists dedicated to delivering real results for Nagpur businesses.</p>
         </div>
         <div class="team-grid">
             <!-- Team Member 1 -->
-            <div class="team-member fade-in bg-white/90 dark:bg-gray-900/90">
+            <div class="team-member fade-in bg-white/90">
             <img class="team-avatar object-cover w-24 h-24 rounded-full shadow-lg border-4 border-indigo-200 mb-4" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Sharma">
-            <h3 class="font-bold text-lg mt-2 mb-1 text-gray-900 dark:text-white">Rishabh Khandekar</h3>
-            <p class="text-indigo-500 dark:text-indigo-400 font-semibold mb-2">Co-founder & Lead Strategist</p>
-            <p class="text-gray-700 dark:text-gray-300">5+ years of experience building dynamic, scalable web apps — passionate about helping local businesses grow with smart digital solutions.</p>
+            <h3 class="font-bold text-lg mt-2 mb-1 text-gray-900">Rishabh Khandekar</h3>
+            <p class="text-indigo-500 font-semibold mb-2">Co-founder & Lead Strategist</p>
+            <p class="text-gray-700">5+ years of experience building dynamic, scalable web apps — passionate about helping local businesses grow with smart digital solutions.</p>
             </div>
             <!-- Team Member 2 -->
-            <div class="team-member fade-in bg-white/90 dark:bg-gray-900/90">
+            <div class="team-member fade-in bg-white/90">
             <img class="team-avatar object-cover w-24 h-24 rounded-full shadow-lg border-4 border-pink-200 mb-4" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Deshmukh">
-            <h3 class="font-bold text-lg mt-2 mb-1 text-gray-900 dark:text-white">Aashish Parage</h3>
-            <p class="text-pink-500 dark:text-pink-400 font-semibold mb-2">Co-founder & Marketing Strategist</p>
-            <p class="text-gray-700 dark:text-gray-300">Driving growth through strategic planning, market insight, and creative campaigns. Focus on building brand presence and generating quality leads.</p>
+            <h3 class="font-bold text-lg mt-2 mb-1 text-gray-900">Aashish Parage</h3>
+            <p class="text-pink-500 font-semibold mb-2">Co-founder & Marketing Strategist</p>
+            <p class="text-gray-700">Driving growth through strategic planning, market insight, and creative campaigns. Focus on building brand presence and generating quality leads.</p>
             </div>
         </div>
         </div>
     </section>
     <!-- Contact Section -->
     <section id="contact" class="section p-0 m-0 max-w-full">
-        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
+        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full">
           <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Contact Us</h2>
           <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Ready to grow your business? Reach out to us for a free consultation or any questions.</p>
+            <p class="text-lg md:text-xl text-gray-700 mb-2 font-medium">Ready to grow your business? Reach out to us for a free consultation or any questions.</p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
             <!-- Contact Info -->
-            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-gray-100 dark:border-gray-700">
-              <h3 class="font-bold text-2xl mb-4 text-gray-900 dark:text-white flex items-center"><i class="fas fa-handshake text-indigo-500 mr-3"></i> Get in Touch</h3>
+            <div class="bg-white/80 backdrop-blur rounded-2xl shadow-xl py-8 px-6 md:px-8 flex flex-col border border-gray-100" style="word-break: break-all; overflow-wrap: anywhere;">
+              <h3 class="font-bold text-2xl mb-4 text-gray-900 flex items-center"><i class="fas fa-handshake text-indigo-500 mr-3"></i> Get in Touch</h3>
               <div class="space-y-2 mb-4">
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-phone text-indigo-500 mr-3"></i> <span class="font-semibold mr-2">Phone:</span> <a href="tel:+919511721668" class="hover:text-pink-500 transition" style="text-decoration:none; color:inherit;">+91 95117 21668</a></div>
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fab fa-whatsapp text-green-500 mr-3"></i> <span class="font-semibold mr-2">WhatsApp:</span> <a href="https://wa.me/917875845879" class="hover:text-green-500 transition" style="text-decoration:none; color:inherit;">+91 78758 45879</a></div>
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-envelope text-pink-400 mr-3"></i> <span class="font-semibold mr-2">Email:</span> <a href="mailto:growbizwebsolutions@gmail.com" class="hover:text-indigo-500 transition" style="text-decoration:none; color:inherit;">growbizwebsolutions@gmail.com</a></div>
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-map-marker-alt text-green-400 mr-3"></i> <span class="font-semibold mr-2">Address:</span> Nagpur, Maharashtra</div>
+                <div class="flex items-center text-lg text-gray-700"><i class="fas fa-phone text-indigo-500 mr-3"></i> <span class="font-semibold mr-2">Phone:</span> <a href="tel:9511721668" class="hover:text-pink-500 transition" style="text-decoration:none; color:inherit;"> 951-172-1668</a></div>
+                <div class="flex items-center text-lg text-gray-700"><i class="fab fa-whatsapp text-green-500 mr-3"></i> <span class="font-semibold mr-2">WhatsApp:</span> <a href="https://wa.me/917875845879" class="hover:text-green-500 transition" style="text-decoration:none; color:inherit;"> 787-584-5879</a></div>
+                <div class="flex items-center text-lg text-gray-700"><i class="fas fa-envelope text-pink-400 mr-3"></i> <span class="font-semibold mr-2">Email:</span> <a href="mailto:growbizwebsolutions@gmail.com" class="hover:text-indigo-500 transition" style="text-decoration:none; color:inherit;">growbizwebsolutions@gmail.com</a></div>
+                <div class="flex items-center text-lg text-gray-700"><i class="fas fa-map-marker-alt text-green-400 mr-3"></i> <span class="font-semibold mr-2">Address:</span> Nagpur, Maharashtra</div>
               </div>
               <div class="mt-3 mb-8">
-                <h4 class="font-semibold text-lg mb-1 text-gray-900 dark:text-white">Business Hours</h4>
-                <p class="text-gray-600 dark:text-gray-400">Monday - Saturday: 9:00 AM - 8:00 PM</p>
-                <p class="text-gray-600 dark:text-gray-400">Sunday: 10:00 AM - 6:00 PM</p>
+                <h4 class="font-semibold text-lg mb-1 text-gray-900">Business Hours</h4>
+                <p class="text-gray-600">Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                <p class="text-gray-600">Sunday: 10:00 AM - 6:00 PM</p>
               </div>
               <div class="overflow-hidden rounded-xl shadow-lg flex-1">
                 <div class="h-full min-h-[260px] flex-1">
@@ -1569,28 +1585,28 @@
               </div>
             </div>
             <!-- Contact Form -->
-            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10 border border-gray-100 dark:border-gray-700 flex flex-col justify-between">
-              <h3 class="font-bold text-2xl mb-6 text-gray-900 dark:text-white flex items-center"><i class="fas fa-paper-plane text-pink-500 mr-3"></i> Send us a Message</h3>
+            <div class="bg-white/80 backdrop-blur rounded-2xl shadow-xl py-10 px-6 md:px-10 border border-gray-100 flex flex-col justify-between">
+              <h3 class="font-bold text-2xl mb-6 text-gray-900 flex items-center"><i class="fas fa-paper-plane text-pink-500 mr-3"></i> Send us a Message</h3>
               <form id="contactForm" class="space-y-6 flex flex-col h-full">
                 <div>
-                  <label for="name" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Name *</label>
-                  <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Name">
+                  <label for="name" class="block text-gray-700 font-semibold mb-2">Name *</label>
+                  <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white/70 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Name">
                 </div>
                 <div>
-                  <label for="phone" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Phone *</label>
-                  <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Phone Number">
+                  <label for="phone" class="block text-gray-700 font-semibold mb-2">Phone *</label>
+                  <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white/70 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Phone Number">
                 </div>
                 <div>
-                  <label for="email" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Email</label>
-                  <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Email (optional)">
+                  <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                  <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white/70 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="Your Email (optional)">
                 </div>
                 <div>
-                  <label for="business" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Business Type</label>
-                  <input type="text" id="business" name="business" class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="e.g., Tuition, Salon, Shop">
+                  <label for="business" class="block text-gray-700 font-semibold mb-2">Business Type</label>
+                  <input type="text" id="business" name="business" class="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white/70 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" placeholder="e.g., Tuition, Salon, Shop">
                 </div>
                 <div class="flex-1 flex flex-col">
-                  <label for="message" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Message *</label>
-                  <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/70 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition resize-none" placeholder="Tell us about your business and website requirements..."></textarea>
+                  <label for="message" class="block text-gray-700 font-semibold mb-2">Message *</label>
+                  <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white/70 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition resize-none" placeholder="Tell us about your business and website requirements..."></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-full mt-4 text-center flex items-center justify-center"><i class="fas fa-paper-plane mr-2"></i>Send Message</button>
               </form>
@@ -1642,10 +1658,10 @@
             <div>
                 <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Contact Info</h4>
                 <ul class="space-y-2">
-                    <li class="flex items-center gap-2 text-white"><i class="fas fa-phone-alt text-green-400"></i> <a href="tel:+919511721668" class="font-semibold text-green-300 hover:text-pink-400 transition" style="text-decoration:none; color:inherit;">+91 95117 21668</a></li>
-                    <li class="flex items-center gap-2 text-white"><i class="fab fa-whatsapp text-green-400"></i> <a href="https://wa.me/917875845879" class="font-semibold text-green-300 hover:text-green-400 transition" style="text-decoration:none; color:inherit;">+91 78758 45879</a></li>
-                    <li class="flex items-center gap-2 text-white"><i class="fas fa-envelope text-pink-400"></i> <a href="mailto:growbizwebsolutions@gmail.com" class="font-semibold text-pink-200 hover:text-indigo-400 transition" style="text-decoration:none; color:inherit;">growbizwebsolutions@gmail.com</a></li>
-                    <li class="flex items-center gap-2 text-white"><i class="fas fa-map-marker-alt text-yellow-300"></i> <span class="font-semibold text-yellow-200">Nagpur, Maharashtra</span></li>
+                    <li class="flex items-center gap-2 text-green-400"><i class="fas fa-phone-alt text-green-400"></i> <a href="tel:9511721668" class="font-medium text-green-400 transition" style="text-decoration:none; color:inherit;"> 951-172-1668</a></li>
+                    <li class="flex items-center gap-2 text-indigo-200"><i class="fab fa-whatsapp text-green-400"></i> <a href="https://wa.me/917875845879" class="font-medium text-green-300 hover:text-green-400 transition" style="text-decoration:none; color:inherit;"> 787-584-5879</a></li>
+                    <li class="flex items-center gap-2 text-pink-200"><i class="fas fa-envelope text-pink-400"></i> <a href="mailto:growbizwebsolutions@gmail.com" class="font-medium text-pink-200 hover:text-indigo-400 transition" style="text-decoration:none; color:inherit;">growbizwebsolutions@gmail.com</a></li>
+                    <li class="flex items-center gap-2 text-white"><i class="fas fa-map-marker-alt text-yellow-300"></i> <span class="font-medium text-yellow-200">Nagpur, Maharashtra</span></li>
                 </ul>
             </div>
         </div>
