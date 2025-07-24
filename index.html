@@ -12,6 +12,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS -->
     <style>
+        @font-face {
+            font-family: 'Segoe UI';
+            src: url('./fonts/segoeui.woff2') format('woff2'),
+                 url('./fonts/segoeui.woff') format('woff'),
+                 url('./fonts/segoeui.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Segoe UI';
+            src: url('./fonts/segoeuib.woff2') format('woff2'),
+                 url('./fonts/segoeuib.woff') format('woff'),
+                 url('./fonts/segoeuib.ttf') format('truetype');
+            font-weight: 700;
+            font-style: bold;
+            font-display: swap;
+        }
         /* Removed transform: none on mobile; JS will cap translateY instead */
         /* Ensure hero-title is white and bold in dark mode */
         .dark .hero-title {
@@ -165,7 +183,7 @@
             justify-content: center;
             text-align: center;
             padding: 0 2rem;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23667eea;stop-opacity:0.1" /><stop offset="100%" style="stop-color:%23764ba2;stop-opacity:0.1" /></linearGradient></defs><rect width="100%" height="100%" fill="url(%23grad1)"/></svg>') center/cover;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
             position: relative;
             overflow: hidden;
         }
@@ -1052,13 +1070,13 @@
         </div>
     </nav>
     <!-- Mobile Drawer Menu -->
-    <div id="mobileDrawer" class="fixed top-0 left-0 w-64 h-full bg-white dark:bg-gray-900 shadow-lg z-[9999] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" style="will-change: transform;">
-        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-800" style="height: 60px;">
+    <div id="mobileDrawer" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-[9999] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden" style="will-change: transform;">
+        <div class="flex items-center justify-between px-4 py-3 border-b border-gray-800 bg-[#18181b]" style="height: 60px;">
             <span class="logo flex items-center gap-2">
-                <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="w-8 h-8 shadow-lg" />
-                <span class="font-bold text-lg tracking-widest text-gray-900 dark:text-white" style="letter-spacing:2px;">GBWS</span>
+                <img src="./logo-icon-2.png" alt="GrowBiz Logo" class="w-8 h-8" />
+                <span class="font-bold text-lg tracking-widest text-gray-100" style="letter-spacing:2px;">GBWS</span>
             </span>
-            <button id="closeDrawerBtn" class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none ml-2" aria-label="Close menu">
+            <button id="closeDrawerBtn" class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl transition focus:outline-none ml-2" aria-label="Close menu">
                 <span class="hamburger-icon modern-hamburger" aria-hidden="true">
                   <svg class="hamburger-svg-modern" width="28" height="28" viewBox="0 0 28 28" fill="none">
                     <defs>
@@ -1078,11 +1096,11 @@
             </button>
         </div>
         <ul class="flex flex-col gap-2 p-6" style="padding-bottom: 120px;">
-            <li><a href="#home" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-home drawer-menu-icon" style="font-size: 0.95em;"></i>Home</a></li>
-            <li><a href="#services" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-concierge-bell drawer-menu-icon" style="font-size: 0.95em;"></i>Services</a></li>
-            <li><a href="#portfolio" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-briefcase drawer-menu-icon" style="font-size: 0.95em;"></i>Portfolio</a></li>
-            <li><a href="#about" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-user-friends drawer-menu-icon" style="font-size: 0.95em;"></i>Our Team</a></li>
-            <li><a href="#contact" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition"><i class="mr-2 fas fa-envelope drawer-menu-icon" style="font-size: 0.95em;"></i>Contact</a></li>
+            <li><a href="#home" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-home drawer-menu-icon" style="font-size: 0.95em;"></i>Home</a></li>
+            <li><a href="#services" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-concierge-bell drawer-menu-icon" style="font-size: 0.95em;"></i>Services</a></li>
+            <li><a href="#portfolio" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-briefcase drawer-menu-icon" style="font-size: 0.95em;"></i>Portfolio</a></li>
+            <li><a href="#about" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-user-friends drawer-menu-icon" style="font-size: 0.95em;"></i>Our Team</a></li>
+            <li><a href="#contact" class="nav-link block px-3 py-2 rounded-lg font-semibold text-gray-800 hover:bg-gray-100 transition"><i class="mr-2 fas fa-envelope drawer-menu-icon" style="font-size: 0.95em;"></i>Contact</a></li>
         </ul>
         <!-- Drawer bottom section: Request Demo button and social links (mobile only) -->
         <div class="drawer-bottom-section px-6 pb-6 pt-2 flex flex-col gap-4" style="position: fixed; left: 0; bottom: 0; width: 100%; background: inherit; z-index: 10000; max-width: 16rem;">
@@ -1092,13 +1110,13 @@
                 <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 transition text-xl text-white shadow"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 hover:from-green-500 hover:to-teal-500 transition text-xl text-white shadow"><i class="fab fa-twitter"></i></a>
             </div>
-            <a href="#contact" class="btn btn-accent w-full flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none drawer-demo-btn"><i class="fas fa-calendar"></i> Request Demo</a>
+            <a href="tel:+919511721668" class="btn btn-accent w-full flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none drawer-demo-btn"><i class="fas fa-calendar"></i> Request Demo</a>
         </div>
         </ul>
     </div>
     <!-- Hero Section -->
     <section id="home" class="hero w-full max-w-full p-0">
-    <div class="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-[30px] bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 w-full max-w-full overflow-hidden shadow-xl hero-inner-flex" style="min-height: 100vh;">
+    <div class="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-[30px] bg-gradient-to-br from-indigo-50 via-white to-purple-50 w-full max-w-full overflow-hidden shadow-xl hero-inner-flex" style="min-height: 100vh;">
         <!-- Left: Text Content -->
         <div class="flex-1 flex flex-col items-start justify-center z-10">
         <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold md:font-extrabold mb-4 md:mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg leading-relaxed animate-fadein text-center mx-auto">
@@ -1107,17 +1125,17 @@
             <span class="block">Today</span>
             <span class="block w-16 h-1 mt-3 mx-auto bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full opacity-80 animate-fadein"></span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-6 font-medium max-w-xl animate-fadein">
+        <p class="text-lg md:text-xl text-gray-700 mb-6 font-medium max-w-xl animate-fadein">
             We help local businesses in Nagpur get online with <span class="text-indigo-500 font-semibold">powerful</span>, <span class="text-pink-500 font-semibold">affordable</span> websites designed to increase trust, build brands, and engage customers.
         </p>
         <div class="flex items-center gap-4 mb-7 animate-fadein get-a-free">
             <img src="./open-gift.gif" alt="Free Demo" class="w-14 h-14 rounded-lg shadow-lg border-2 border-pink-200 animate-bounce-slow demo-icon" />
-            <span class="text-base md:text-lg text-gray-800 dark:text-gray-200 font-semibold demo-text">Get a <span class="text-pink-500 font-bold">free demo</span> at your doorstep – no cost, no pressure. <br class="hidden md:block"/>Call or WhatsApp us now to discuss your project!</span>
+            <span class="text-base md:text-lg text-gray-800 font-semibold demo-text">Get a <span class="text-pink-500 font-bold">free demo</span> at your doorstep – no cost, no pressure. <br class="hidden md:block"/>Call or WhatsApp us now to discuss your project!</span>
         </div>
         <div class="flex flex-col sm:flex-row flex-wrap gap-4 w-full max-w-xl mx-auto animate-fadein ">
-            <a href="tel:+919876543210" class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-phone"></i> Call Now</a>
-            <a href="https://wa.me/919876543210" class="btn btn-secondary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
-            <a href="#contact" class="btn btn-accent w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-calendar"></i> Request Demo</a>
+            <a href="tel:+919511721668" class="btn btn-primary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-phone"></i> Call Now</a>
+            <a href="https://wa.me/917875845879" class="btn btn-secondary w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+            <a href="tel:+919511721668" class="btn btn-accent w-full sm:w-auto flex items-center justify-center gap-2 text-md font-semibold shadow transition hover:scale-105 focus:outline-none"><i class="fas fa-calendar"></i> Request Demo</a>
         </div>
         </div>
         <!-- Right: Accent Image/Shape -->
@@ -1216,42 +1234,42 @@
     </section>
     <!-- Why Your Business Needs a Website Section -->
     <section id="why-business" class="why-business section max-w-full p-0">
-        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
+        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Why Your Business Needs a Website</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">In today's digital world, your website is your business card, your shopfront, and your reputation all in one place.</p>
-            <p class="text-base text-gray-500 dark:text-gray-400">If you don't have a website, you're invisible to most customers. A professional site builds trust, gives information, and brings in new business.</p>
+            <p class="text-lg md:text-xl text-gray-700 mb-2 font-medium">In today's digital world, your website is your business card, your shopfront, and your reputation all in one place.</p>
+            <p class="text-base text-gray-500">If you don't have a website, you're invisible to most customers. A professional site builds trust, gives information, and brings in new business.</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-clock"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Always Open</h3>
-            <p class="text-gray-600 dark:text-gray-300">Your business is visible 24/7, even when you're not working.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Always Open</h3>
+            <p class="text-gray-600">Your business is visible 24/7, even when you're not working.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fab fa-google"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Appear on Google</h3>
-            <p class="text-gray-600 dark:text-gray-300">Get found by customers searching for your services.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Appear on Google</h3>
+            <p class="text-gray-600">Get found by customers searching for your services.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-shield-alt"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Build Trust</h3>
-            <p class="text-gray-600 dark:text-gray-300">A professional website increases your credibility instantly.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Build Trust</h3>
+            <p class="text-gray-600">A professional website increases your credibility instantly.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-chart-line"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Grow Sales</h3>
-            <p class="text-gray-600 dark:text-gray-300">Turn online visitors into real customers and bookings.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Grow Sales</h3>
+            <p class="text-gray-600">Turn online visitors into real customers and bookings.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 to-orange-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-bullhorn"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Showcase Your Brand</h3>
-            <p class="text-gray-600 dark:text-gray-300">Present your unique story, services, and values.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Showcase Your Brand</h3>
+            <p class="text-gray-600">Present your unique story, services, and values.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-yellow-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-star"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Highlight Reviews</h3>
-            <p class="text-gray-600 dark:text-gray-300">Share testimonials and build social proof easily.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Highlight Reviews</h3>
+            <p class="text-gray-600">Share testimonials and build social proof easily.</p>
             </div>
         </div>
         </div>
@@ -1261,93 +1279,93 @@
         <div class="relative py-20 px-8 w-full max-w-full" style="background:transparent;margin-bottom:1px;box-shadow:none;">
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">How We Help You Grow</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
-            <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">We go beyond just building websites. Our mission is to empower your business with a complete digital presence that attracts, engages, and converts your ideal customers.</p>
-            <p class="text-base text-gray-500 dark:text-gray-400">Here’s how we deliver real growth for your business:</p>
+            <p class="text-lg md:text-xl text-gray-700 mb-2 font-medium">We go beyond just building websites. Our mission is to empower your business with a complete digital presence that attracts, engages, and converts your ideal customers.</p>
+            <p class="text-base text-gray-500">Here’s how we deliver real growth for your business:</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-bullseye"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Tailored Strategy</h3>
-            <p class="text-gray-600 dark:text-gray-300">We analyze your business, audience, and goals to craft a custom online strategy—no cookie-cutter solutions.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Tailored Strategy</h3>
+            <p class="text-gray-600">We analyze your business, audience, and goals to craft a custom online strategy—no cookie-cutter solutions.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-laptop-code"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Modern, Responsive</h3>
-            <p class="text-gray-600 dark:text-gray-300">Your site will look stunning and work perfectly on every device, with fast load times and a seamless user experience.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Modern, Responsive</h3>
+            <p class="text-gray-600">Your site will look stunning and work perfectly on every device, with fast load times and a seamless user experience.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-search-dollar"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">SEO & Google Visibility</h3>
-            <p class="text-gray-600 dark:text-gray-300">We optimize your website for search engines so your business appears on Google and attracts more local customers.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">SEO & Google Visibility</h3>
+            <p class="text-gray-600">We optimize your website for search engines so your business appears on Google and attracts more local customers.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-handshake"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Lead Generation Tools</h3>
-            <p class="text-gray-600 dark:text-gray-300">Integrated contact forms, WhatsApp chat, and call-to-action buttons make it easy for visitors to reach you and become real customers.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Lead Generation Tools</h3>
+            <p class="text-gray-600">Integrated contact forms, WhatsApp chat, and call-to-action buttons make it easy for visitors to reach you and become real customers.</p>
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
             <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-chart-line text-indigo-500 mr-2"></i> Ongoing Support & Updates</h4>
-            <p class="text-gray-600 dark:text-gray-300">We don’t disappear after launch. Enjoy ongoing support, content updates, and technical help so your website always stays fresh and secure.</p>
+            <p class="text-gray-600">We don’t disappear after launch. Enjoy ongoing support, content updates, and technical help so your website always stays fresh and secure.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
             <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-users text-green-500 mr-2"></i> Local Market Expertise</h4>
-            <p class="text-gray-600 dark:text-gray-300">We understand the Nagpur market and what local customers expect. Our solutions are designed to help you stand out and win in your area.</p>
+            <p class="text-gray-600">We understand the Nagpur market and what local customers expect. Our solutions are designed to help you stand out and win in your area.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
             <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-shield-alt text-blue-500 mr-2"></i> Security & Privacy</h4>
-            <p class="text-gray-600 dark:text-gray-300">Your site is protected with the latest security best practices, SSL, and privacy features to keep your business and customer data safe.</p>
+            <p class="text-gray-600">Your site is protected with the latest security best practices, SSL, and privacy features to keep your business and customer data safe.</p>
             </div>
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100 dark:border-gray-700">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col transition border border-gray-100">
             <h4 class="font-semibold text-xl mb-2 flex items-center" style="color:#ffffff;"> <i class="fas fa-rocket text-pink-500 mr-2"></i> Digital Growth Partner</h4>
-            <p class="text-gray-600 dark:text-gray-300">We’re your long-term partner for digital growth—ready to help with new features, marketing, and advice as your business evolves.</p>
+            <p class="text-gray-600">We’re your long-term partner for digital growth—ready to help with new features, marketing, and advice as your business evolves.</p>
             </div>
         </div>
         </div>
     </section>
     <!-- Services Section -->
     <section id="services" class="section w-full max-w-full shadow-xl p-0 m-0" style="margin-bottom: 1px;">
-        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full">
+      <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full">
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Our Services</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto">
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-code"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Website Design</h3>
-            <p class="text-gray-600 dark:text-gray-300">Custom, responsive websites that reflect your brand and drive results. Static and dynamic options for every business need.</p>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Website Design</h3>
+            <p class="text-gray-600">Custom, responsive websites that reflect your brand and drive results. Static and dynamic options for every business need.</p>
+          </div>
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-map-marker-alt"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Google Business Listing</h3>
-            <p class="text-gray-600 dark:text-gray-300">Get found on Google Maps and local search. We set up and optimize your business profile for maximum visibility.</p>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Google Business Listing</h3>
+            <p class="text-gray-600">Get found on Google Maps and local search. We set up and optimize your business profile for maximum visibility.</p>
+          </div>
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-red-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-server"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Hosting & Domain</h3>
-            <p class="text-gray-600 dark:text-gray-300">Fast, secure hosting and domain management. We handle all the technical details so you can focus on your business.</p>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Hosting & Domain</h3>
+            <p class="text-gray-600">Fast, secure hosting and domain management. We handle all the technical details so you can focus on your business.</p>
+          </div>
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-yellow-400 to-orange-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-palette"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Logo & Branding</h3>
-            <p class="text-gray-600 dark:text-gray-300">Professional logo design and brand identity to make your business stand out and be memorable.</p>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Logo & Branding</h3>
+                       <p class="text-gray-600">Professional logo design and brand identity to make your business stand out and be memorable.</p>
+          </div>
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-chart-bar"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">SEO Optimization</h3>
-            <p class="text-gray-600 dark:text-gray-300">On-page SEO and best practices to help your website rank higher and attract more customers from Google.</p>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">SEO Optimization</h3>
+            <p class="text-gray-600">On-page SEO and best practices to help your website rank higher and attract more customers from Google.</p>
+          </div>
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-comments"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Integration Services</h3>
-            <p class="text-gray-600 dark:text-gray-300">WhatsApp, contact forms, and other integrations to make it easy for customers to reach you and interact.</p>
-        </div>
-        <div class="group relative bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700">
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Integration Services</h3>
+            <p class="text-gray-600">WhatsApp, contact forms, and other integrations to make it easy for customers to reach you and interact.</p>
+          </div>
+          <div class="group relative bg-white shadow-lg hover:shadow-2xl transition p-8 flex flex-col items-center text-center border border-gray-100">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-500 to-blue-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition"><i class="fas fa-bullhorn"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Digital Marketing</h3>
-            <p class="text-gray-600 dark:text-gray-300">Grow your business with social media, Google Ads, and digital campaigns tailored for local success.</p>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Digital Marketing</h3>
+            <p class="text-gray-600">Grow your business with social media, Google Ads, and digital campaigns tailored for local success.</p>
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     </section>
     <!-- Portfolio Section -->
     <section id="portfolio" class="section max-w-full p-0">
@@ -1358,25 +1376,25 @@
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <!-- Portfolio Card 1 -->
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-graduation-cap"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">XYZ Tuition Classes</h3>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">XYZ Tuition Classes</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Dharampeth, Nagpur</p>
             <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>60% increase in student inquiries</p>
             <p class="text-gray-600 dark:text-gray-300">Complete website with online admission forms, fee structure, and teacher profiles.</p>
             </div>
             <!-- Portfolio Card 2 -->
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-400 to-fuchsia-500 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-cut"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Beauty Salon</h3>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Beauty Salon</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Sitabuldi, Nagpur</p>
             <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>45% more bookings online</p>
             <p class="text-gray-600 dark:text-gray-300">Modern website with service gallery, online booking, and customer reviews.</p>
             </div>
             <!-- Portfolio Card 3 -->
-            <div class="group bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+            <div class="group bg-white/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl border border-gray-100 relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-400 to-cyan-400 text-white text-3xl mb-5 shadow-lg group-hover:scale-110 transition animate-bounce-slow"><i class="fas fa-shopping-bag"></i></div>
-            <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Local Retailer</h3>
+            <h3 class="font-bold text-lg mb-2 text-gray-900">Local Retailer</h3>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-1"><i class="fas fa-map-marker-alt text-pink-500 mr-1"></i> Itwari, Nagpur</p>
             <p class="text-green-600 dark:text-green-400 font-semibold mb-2"><i class="fas fa-arrow-up mr-1"></i>30% increase in trust & traffic</p>
             <p class="text-gray-600 dark:text-gray-300">Professional showcase website with product catalog and WhatsApp integration.</p>
@@ -1386,7 +1404,7 @@
     </section>
     <!-- Unified Pricing & Suitability Section (Revised Layout) -->
     <section id="pricing-suitability" class="section max-w-full p-0">
-      <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full">
+      <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full">
         <!-- Pricing Heading -->
         <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Pricing Plan</h2>
         <div class="max-w-2xl mx-auto text-center mb-10">
@@ -1395,7 +1413,7 @@
         <!-- Pricing Plans -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto mb-12">
           <!-- Static Website Card -->
-          <div class="plan-card bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+          <div class="plan-card bg-white/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 to-purple-400 text-white text-3xl mb-5 shadow-lg"><i class="fas fa-file-code"></i></div>
             <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white">Static Website</h3>
             <div class="flex flex-col items-center mb-4">
@@ -1419,7 +1437,7 @@
             <a href="#contact" class="btn btn-primary w-full mt-auto justify-center"><i class="fas fa-calendar"></i> Request Demo</a>
           </div>
           <!-- Dynamic Website Card -->
-          <div class="plan-card bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+          <div class="plan-card bg-white/80 backdrop-blur rounded-2xl shadow-xl p-10 flex flex-col items-center text-center border border-gray-100 dark:border-gray-700 transition transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl relative overflow-hidden">
             <div class="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 text-white text-3xl mb-5 shadow-lg"><i class="fas fa-database"></i></div>
             <h3 class="font-bold text-2xl mb-2 text-gray-900 dark:text-white">Dynamic Website</h3>
             <div class="flex flex-col items-center mb-4">
@@ -1518,7 +1536,7 @@
     </section>
     <!-- Contact Section -->
     <section id="contact" class="section p-0 m-0 max-w-full">
-        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
+        <div class="relative py-20 px-8 bg-gradient-to-br from-indigo-50 via-white to-purple-50 shadow-xl w-full max-w-full" style="margin-bottom:1px;">
           <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">Contact Us</h2>
           <div class="max-w-2xl mx-auto text-center mb-10">
             <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2 font-medium">Ready to grow your business? Reach out to us for a free consultation or any questions.</p>
@@ -1528,9 +1546,9 @@
             <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-8 flex flex-col border border-gray-100 dark:border-gray-700">
               <h3 class="font-bold text-2xl mb-4 text-gray-900 dark:text-white flex items-center"><i class="fas fa-handshake text-indigo-500 mr-3"></i> Get in Touch</h3>
               <div class="space-y-2 mb-4">
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-phone text-indigo-500 mr-3"></i> <span class="font-semibold mr-2">Phone:</span> +91 98765 43210</div>
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fab fa-whatsapp text-green-500 mr-3"></i> <span class="font-semibold mr-2">WhatsApp:</span> +91 98765 43210</div>
-                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-envelope text-pink-400 mr-3"></i> <span class="font-semibold mr-2">Email:</span> info@nagpurweb.com</div>
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-phone text-indigo-500 mr-3"></i> <span class="font-semibold mr-2">Phone:</span> <a href="tel:+919511721668" class="hover:text-pink-500 transition" style="text-decoration:none; color:inherit;">+91 95117 21668</a></div>
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fab fa-whatsapp text-green-500 mr-3"></i> <span class="font-semibold mr-2">WhatsApp:</span> <a href="https://wa.me/917875845879" class="hover:text-green-500 transition" style="text-decoration:none; color:inherit;">+91 78758 45879</a></div>
+                <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-envelope text-pink-400 mr-3"></i> <span class="font-semibold mr-2">Email:</span> <a href="mailto:growbizwebsolutions@gmail.com" class="hover:text-indigo-500 transition" style="text-decoration:none; color:inherit;">growbizwebsolutions@gmail.com</a></div>
                 <div class="flex items-center text-lg text-gray-700 dark:text-gray-300"><i class="fas fa-map-marker-alt text-green-400 mr-3"></i> <span class="font-semibold mr-2">Address:</span> Nagpur, Maharashtra</div>
               </div>
               <div class="mt-3 mb-8">
@@ -1624,8 +1642,9 @@
             <div>
                 <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Contact Info</h4>
                 <ul class="space-y-2">
-                    <li class="flex items-center gap-2 text-white"><i class="fas fa-phone-alt text-green-400"></i> <span class="font-semibold text-green-300">+91 98765 43210</span></li>
-                    <li class="flex items-center gap-2 text-white"><i class="fas fa-envelope text-pink-400"></i> <span class="font-semibold text-pink-200">info@nagpurweb.com</span></li>
+                    <li class="flex items-center gap-2 text-white"><i class="fas fa-phone-alt text-green-400"></i> <a href="tel:+919511721668" class="font-semibold text-green-300 hover:text-pink-400 transition" style="text-decoration:none; color:inherit;">+91 95117 21668</a></li>
+                    <li class="flex items-center gap-2 text-white"><i class="fab fa-whatsapp text-green-400"></i> <a href="https://wa.me/917875845879" class="font-semibold text-green-300 hover:text-green-400 transition" style="text-decoration:none; color:inherit;">+91 78758 45879</a></li>
+                    <li class="flex items-center gap-2 text-white"><i class="fas fa-envelope text-pink-400"></i> <a href="mailto:growbizwebsolutions@gmail.com" class="font-semibold text-pink-200 hover:text-indigo-400 transition" style="text-decoration:none; color:inherit;">growbizwebsolutions@gmail.com</a></li>
                     <li class="flex items-center gap-2 text-white"><i class="fas fa-map-marker-alt text-yellow-300"></i> <span class="font-semibold text-yellow-200">Nagpur, Maharashtra</span></li>
                 </ul>
             </div>
