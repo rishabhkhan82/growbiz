@@ -1822,6 +1822,18 @@
           const submitBtn = document.getElementById('contactSubmitBtn');
           // Set _next to current page (no redirect, just show message)
           form.querySelector('input[name="_next"]').value = window.location.href + '#contact-success';
+
+          // --- INSTANT SUCCESS NOTIFICATION USING IFRAME SUBMISSION ---
+          // Create a hidden iframe for instant feedback
+          let formIframe = null;
+          if (!form.target) {
+            formIframe = document.createElement('iframe');
+            formIframe.name = 'formsubmit-iframe';
+            formIframe.style.display = 'none';
+            document.body.appendChild(formIframe);
+            form.target = 'formsubmit-iframe';
+          }
+
           form.addEventListener('submit', function(e) {
             // Client-side validation
             let valid = true;
@@ -1875,24 +1887,39 @@
             notification.style.display = 'block';
             notification.classList.remove('bg-red-100','text-red-700','border','border-red-300');
             notification.classList.add('bg-blue-100','text-blue-700','border','border-blue-300');
-            // Allow form to submit to Formsubmit.co
+            // Allow form to submit to Formsubmit.co (via iframe)
+            // Listen for iframe load to show success
+            if (formIframe) {
+              formIframe.onload = function() {
+                notification.textContent = 'Thank you! Your message has been sent successfully.';
+                notification.style.display = 'block';
+                notification.classList.remove('bg-red-100','text-red-700','border','border-red-300','bg-blue-100','text-blue-700','border-blue-300');
+                notification.classList.add('bg-green-100','text-green-700','border','border-green-300');
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-60','cursor-not-allowed');
+                setTimeout(function() {
+                  notification.style.display = 'none';
+                }, 3500);
+              };
+            }
           });
-          // Show success message if redirected back with #contact-success
+
+          // Fallback: Show success message if redirected back with #contact-success (for non-iframe or reload)
           if (window.location.hash === '#contact-success') {
-            notification.textContent = 'Thank you! Your message has been sent successfully.';
+            notification.textContent = 'Thank you! We have received your message. We will get back to you by Today.';
             notification.style.display = 'block';
             notification.classList.remove('bg-red-100','text-red-700','border','border-red-300','bg-blue-100','text-blue-700','border-blue-300');
             notification.classList.add('bg-green-100','text-green-700','border','border-green-300');
-            // Reset form fields
             form.reset();
             submitBtn.disabled = false;
             submitBtn.classList.remove('opacity-60','cursor-not-allowed');
-            // Remove hash from URL after showing message
             setTimeout(function() {
               if (window.location.hash === '#contact-success') {
                 history.replaceState(null, '', window.location.pathname + window.location.search);
               }
-            }, 2000);
+              notification.style.display = 'none';
+            }, 3500);
           }
         });
 
@@ -2150,12 +2177,12 @@
 6] footer logo - Done
 8] pricing plans edits - discount, suitable for section in cards, free tags - Done
 9] WhatsApp button integration - Done
-
 3] form section - Formsubmit.co - Done
-7] social media links creating and linking - pending
 1] drawer - full width, dark background - Done
-2] loader - optional, make svg of logo and animate it - pending
 3] font not loading on time issue - Done.
+
+7] social media links creating and linking - pending
+8] success message notification not coming on successful submission of contact form - pending
 
 1] business card
 2]  -->
