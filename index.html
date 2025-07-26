@@ -1570,7 +1570,7 @@
             <!-- Contact Form -->
             <div class="bg-white/80 backdrop-blur rounded-2xl shadow-xl py-10 px-6 md:px-10 border border-gray-100 flex flex-col justify-between">
               <h3 class="font-bold text-2xl mb-6 text-gray-900 flex items-center"><i class="fas fa-paper-plane text-pink-500 mr-3"></i> Send us a Message</h3>
-              <form id="contactForm" action="https://formsubmit.co/rishabhkhan82@gmail.com" method="POST" class="space-y-6 flex flex-col h-full">
+              <form id="contactForm" action="https://formsubmit.co/8638e1b0aeaea309910bed997fc4c9cd" method="POST" class="space-y-6 flex flex-col h-full">
                 <input type="hidden" name="_next" value="">
                 <input type="hidden" name="_captcha" value="false">
                 <div id="formNotification" style="display:none" class="mb-2 p-3 rounded-lg text-center font-semibold"></div>
@@ -2051,7 +2051,7 @@
     </script>
     <!--End of Tawk.to Script-->
     <script>
-    // Hero 3D tilt effect on mouse move
+    // Hero 3D tilt effect: mouse (desktop) and touch (mobile) support
     document.addEventListener('DOMContentLoaded', function() {
       const parent = document.querySelector('.hero-tilt-parent');
       const content = document.querySelector('.hero-tilt-content');
@@ -2059,7 +2059,7 @@
       let mouseX = 0, mouseY = 0, width = 0, height = 0;
       let currentX = 0, currentY = 0;
       let animFrame;
-    
+
       function updateSize() {
         const rect = parent.getBoundingClientRect();
         width = rect.width;
@@ -2067,19 +2067,18 @@
       }
       updateSize();
       window.addEventListener('resize', updateSize);
-    
+
       function animate() {
-        // Smoothly interpolate currentX/currentY toward mouseX/mouseY
         currentX += (mouseX - currentX) * 0.12;
         currentY += (mouseY - currentY) * 0.12;
-        // Max tilt: 18deg
         const maxTilt = 18;
         const tiltX = (currentY - height/2) / (height/2) * maxTilt;
         const tiltY = (currentX - width/2) / (width/2) * maxTilt;
         content.style.transform = `perspective(900px) rotateX(${-tiltX}deg) rotateY(${tiltY}deg)`;
         animFrame = requestAnimationFrame(animate);
       }
-    
+
+      // Mouse events (desktop)
       parent.addEventListener('mousemove', function(e) {
         const rect = parent.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
@@ -2100,6 +2099,36 @@
         currentX = width/2;
         currentY = height/2;
       });
+
+      // Touch events (mobile)
+      parent.addEventListener('touchstart', function(e) {
+        updateSize();
+        if (animFrame) cancelAnimationFrame(animFrame);
+        animFrame = requestAnimationFrame(animate);
+        if (e.touches.length > 0) {
+          const rect = parent.getBoundingClientRect();
+          mouseX = e.touches[0].clientX - rect.left;
+          mouseY = e.touches[0].clientY - rect.top;
+        }
+      }, { passive: true });
+      parent.addEventListener('touchmove', function(e) {
+        if (e.touches.length > 0) {
+          const rect = parent.getBoundingClientRect();
+          mouseX = e.touches[0].clientX - rect.left;
+          mouseY = e.touches[0].clientY - rect.top;
+        }
+      }, { passive: true });
+      parent.addEventListener('touchend', function() {
+        mouseX = width/2;
+        mouseY = height/2;
+        cancelAnimationFrame(animFrame);
+        content.style.transition = 'transform 0.7s cubic-bezier(.22,1,.36,1)';
+        content.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+        setTimeout(() => { content.style.transition = ''; }, 800);
+        currentX = width/2;
+        currentY = height/2;
+      });
+
       // Initialize to center
       mouseX = width/2;
       mouseY = height/2;
