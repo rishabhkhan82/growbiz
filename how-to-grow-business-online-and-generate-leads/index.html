@@ -1,1 +1,854 @@
-data
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- META TAGS START -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Grow Local Businesses Online & Generate Leads | 2025 Guide - GrowBiz Web Solutions</title>
+  <meta name="description"
+    content="Learn how to grow your local business online, generate high-quality leads, and boost your reputation with this 2025 step-by-step guide from GrowBiz Web Solutions. Expert tips on websites, Google My Business, SEO, reviews, and digital marketing for local businesses in India.">
+  <meta name="keywords"
+    content="grow local business online, local business lead generation, digital marketing for local business, Google My Business optimization, local SEO tips 2025, online reputation management, business website design, content marketing for local business, social media for local business, WhatsApp marketing, Facebook marketing, Instagram for business, get more local customers, small business growth strategies, best lead generation tactics, online reviews, business listings India, website SEO, local business trends 2025, boost business online, generate leads online, business growth India, modern business website, business blog SEO, local business marketing, business digital presence, business growth guide 2025, how to get more customers, business online presence, business website tips, business marketing ideas, growbiz web solutions">
+  <!-- META TAGS END -->
+  <!-- FONTAWESOME ICON CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <!-- TAILWIND CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./growbusiness.css" alt="how to grow local busineses online and generate leads styles">
+  <!-- Optimized Main JavaScript -->
+  <script src="./growbusiness.js" defer></script>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR START -->
+  <nav class="navbar w-full z-50 transition-all duration-300 bg-gray-900 shadow-lg" id="mainNavbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex items-center justify-between h-[44px] min-h-[44px]">
+      <div class="flex-1 flex items-center gap-2 select-none min-w-0">
+        <span class="logo flex items-center gap-1">
+          <img src="./images/growbiz-web-solutions-logo.png" alt="GrowBiz Logo" class="hidden md:block w-8 h-8 shadow-lg" loading="lazy" />
+          <span class="company-logo-text">GrowBiz Web Solutions</span>
+        </span>
+      </div>
+      <div class="flex-[2] flex items-center justify-end min-w-0 navbar-right">
+        <ul class="hidden md:flex items-center gap-1.5 lg:gap-3 xl:gap-4" id="navbarMenu">
+          <li><a href="./index.html#home"
+              class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-yellow-200 transition"><i
+                class="fas fa-home mr-2" style="font-size: 0.95em;"></i>Home</a></li>
+          <li><a href="./index.html#clientreview"
+              class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-indigo-200 transition"><i
+                class="fas fa-star mr-2" style="font-size: 0.95em;"></i>Client Review</a></li>
+          <li><a href="./index.html#services"
+              class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-pink-200 transition"><i
+                class="fas fa-concierge-bell mr-2" style="font-size: 0.95em;"></i>Services</a></li>
+          <li><a href="./index.html#about"
+              class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-purple-200 transition"><i
+                class="fas fa-user-friends mr-2" style="font-size: 0.95em;"></i>Our Team</a></li>
+          <li><a href="./index.html#growbiz-ai-assistant"
+              class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 hover:bg-gray-800 hover:text-green-200 transition"><i
+                class="fas fa-robot mr-2" style="font-size: 0.95em;"></i>Growbiz Ai Assistant</a></li>
+          <!-- BLOG DROPDOWN -->
+          <li class="relative group" id="blogDropdownNav">
+            <button id="blogDropdownBtn"
+              class="nav-link px-2 py-1.5 rounded-lg font-medium text-gray-100 text-pink-500 transition bg-gray-800 flex items-center gap-2 focus:outline-none">
+              <i class="fas fa-blog mr-1" style="font-size: 0.95em;"></i>Blog
+              <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="blogDropdownMenu"
+              class="origin-top-right absolute right-0 mt-2 w-64 rounded-xl shadow-2xl bg-gray-900 ring-1 ring-black ring-opacity-5 opacity-0 pointer-events-none transition-all duration-300 scale-95 z-50"
+              style="min-width: 220px;">
+              <div class="p-2">
+                <a href="./how-to-grow-business-online-and-generate-leads.html"
+                  class="mb-1 flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-pink-500 to-yellow-400 text-white rounded-lg transition-all duration-200 shadow">
+                  <i class="fas fa-arrow-up-right-from-square text-white"></i>
+                  Grow Your Business Online
+                </a>
+                <a href="#"
+                  class="mb-1 flex items-center gap-3 px-5 py-3 text-gray-100 hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-400 hover:text-white rounded-lg transition-all duration-200">
+                  <i class="fas fa-arrow-up-right-from-square text-white"></i>
+                  Why Digital Marketing Matters?
+                </a>
+                <button id="closeBlogDropdownBtn"
+                  class="w-full flex items-center gap-3 px-5 py-3 text-gray-500 hover:text-pink-500 rounded-lg font-medium transition-all duration-200">
+                  <i class="fas fa-times-circle"></i>
+                  Close
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <!-- HAMBURGER FOR MOBILE -->
+        <button id="mobileMenuBtn"
+          class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none ml-2"
+          aria-label="Open menu">
+          <span class="hamburger-icon modern-hamburger" aria-hidden="true">
+            <svg class="hamburger-svg-modern" width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <defs>
+                <linearGradient id="hamburger-gradient" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366F1" />
+                  <stop offset="0.5" stop-color="#A21CAF" />
+                  <stop offset="1" stop-color="#F472B6" />
+                </linearGradient>
+              </defs>
+              <!-- TOP LINE -->
+              <rect x="3" y="6" width="22" height="4" rx="2" fill="url(#hamburger-gradient)" stroke="#fff"
+                stroke-width="1.5" class="bar top" />
+              <!-- MIDDLE LINE -->
+              <rect x="3" y="12" width="22" height="4" rx="2" fill="url(#hamburger-gradient)" stroke="#fff"
+                stroke-width="1.5" class="bar middle" />
+              <!-- BOTTOM LINE -->
+              <rect x="3" y="18" width="22" height="4" rx="2" fill="url(#hamburger-gradient)" stroke="#fff"
+                stroke-width="1.5" class="bar bottom" />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <!-- <div class="flex items-center gap-2">
+            <button class="theme-toggle w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-100 text-xl shadow transition focus:outline-none" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button id="mobileMenuBtn" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 text-gray-100 text-2xl shadow transition focus:outline-none" aria-label="Open menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            </div> -->
+    </div>
+  </nav>
+  <!-- NAVBAR END -->
+
+  <!-- MOBILE DRAWER MENU START -->
+  <div id="mobileDrawer"
+    class="fixed top-0 left-0 w-full h-full shadow-lg z-[9999] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+    style="will-change: transform;background-color: #111827;">
+    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-200" style="height: 60px;">
+      <span class="logo flex items-center gap-1">
+        <img src="./images/growbiz-web-solutions-logo.png" alt="GrowBiz Logo" class="w-8 h-8" loading="lazy" />
+        <span class="font-bold text-md tracking-widest text-gray-100 company-logo-text"
+          style="letter-spacing:2px;">GROWBIZ WEB SOLUTIONS</span>
+      </span>
+      <button id="closeDrawerBtn"
+        class="md:hidden flex items-center justify-center w-10 h-10 hover:bg-gray-700 text-gray-100 text-2xl transition focus:outline-none ml-2"
+        aria-label="Close menu">
+        <span class="hamburger-icon modern-hamburger" aria-hidden="true">
+          <svg class="hamburger-svg-modern" width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <defs>
+              <linearGradient id="close-gradient" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6366F1" />
+                <stop offset="0.5" stop-color="#A21CAF" />
+                <stop offset="1" stop-color="#F472B6" />
+              </linearGradient>
+            </defs>
+            <!-- X ICON (WHITE OUTER, GRADIENT INNER) -->
+            <line x1="7" y1="7" x2="21" y2="21" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+            <line x1="21" y1="7" x2="7" y2="21" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+            <line x1="7" y1="7" x2="21" y2="21" stroke="url(#close-gradient)" stroke-width="2.2"
+              stroke-linecap="round" />
+            <line x1="21" y1="7" x2="7" y2="21" stroke="url(#close-gradient)" stroke-width="2.2"
+              stroke-linecap="round" />
+          </svg>
+        </span>
+      </button>
+    </div>
+    <ul class="flex flex-col gap-2 p-6" style="padding-bottom: 120px;">
+      <li><a href="./index.html#home"
+          class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-100 hover:bg-gray-800 transition"><i
+            class="mr-2 fas fa-home drawer-menu-icon" style="font-size: 0.95em;"></i>Home</a></li>
+      <li><a href="./index.html#clientreview"
+          class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-100 hover:bg-gray-800 transition"><i
+            class="mr-2 fas fa-star drawer-menu-icon" style="font-size: 0.95em;"></i>Client Review</a></li>
+      <li><a href="./index.html#services"
+          class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-100 hover:bg-gray-800 transition"><i
+            class="mr-2 fas fa-concierge-bell drawer-menu-icon" style="font-size: 0.95em;"></i>Services</a></li>
+      <li><a href="./index.html#about"
+          class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-100 hover:bg-gray-800 transition"><i
+            class="mr-2 fas fa-user-friends drawer-menu-icon" style="font-size: 0.95em;"></i>Our Team</a></li>
+      <li><a href="./index.html#growbiz-ai-assistant"
+          class="nav-link block px-3 py-2 rounded-lg font-medium text-gray-100 hover:bg-gray-800 transition"><i
+            class="mr-2 fas fa-robot drawer-menu-icon" style="font-size: 0.95em;"></i>Growbiz Ai Assistant</a></li>
+      <li id="mobileBlogDropdown" class="relative">
+        <button id="mobileBlogDropdownBtn"
+          class="nav-link w-full flex items-center gap-2 px-3 py-2 rounded-lg font-medium bg-gray-800 text-pink-500 transition focus:outline-none">
+          <i class="fas fa-blog mr-2 drawer-menu-icon" style="font-size: 0.95em;"></i>Blog
+          <svg id="mobileBlogDropdownIcon" class="w-4 h-4 ml-1 transition-transform duration-300" fill="none"
+            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobileBlogDropdownMenu"
+          class="origin-top-right mt-2 w-full rounded-xl shadow-2xl bg-gray-900 ring-1 ring-black ring-opacity-5 opacity-100 pointer-events-auto scale-100 transition-all duration-300 z-50">
+          <div class="p-2">
+            <a href="how-to-grow-local-businesses-online-generate-leads.html"
+              class="mb-1 flex items-center gap-3 px-5 py-3 text-gray-100 bg-gradient-to-r from-pink-500 to-yellow-400 text-white rounded-lg transition-all duration-200">
+              <i class="fas fa-arrow-up-right-from-square text-white"></i>
+              Grow Your Business Online
+            </a>
+            <a href="#"
+              class="mb-1 flex items-center gap-3 px-5 py-3 text-gray-100 hover:bg-gradient-to-r hover:from-pink-500 hover:to-yellow-400 hover:text-white rounded-lg transition-all duration-200">
+              <i class="fas fa-arrow-up-right-from-square text-white"></i>
+              Why Digital Marketing Matters?
+            </a>
+            <button id="closeMobileBlogDropdownBtn"
+              class="w-full flex items-center gap-3 px-5 py-3 text-gray-500 hover:text-pink-500 rounded-lg font-medium transition-all duration-200">
+              <i class="fas fa-times-circle"></i>
+              Close
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <!-- DRAWER BOTTOM SECTION: DEMO BUTTON & SOCIAL LINKS -->
+    <div class="drawer-bottom-section px-6 pb-6 pt-2 flex flex-col gap-4"
+      style="position: fixed; left: 0; bottom: 0; width: 100%; background: inherit; z-index: 10000;">
+      <div class="drawer-social flex items-center justify-start gap-3 mb-1">
+        <a href="#"
+          class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition text-xl text-white shadow"><i
+            class="fab fa-facebook-f"></i></a>
+        <a href="#"
+          class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 transition text-xl text-white shadow"><i
+            class="fab fa-instagram"></i></a>
+        <a href="#"
+          class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 transition text-xl text-white shadow"><i
+            class="fab fa-linkedin-in"></i></a>
+        <a href="#"
+          class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 hover:from-green-500 hover:to-teal-500 transition text-xl text-white shadow"><i
+            class="fab fa-twitter"></i></a>
+      </div>
+      <a href="https://wa.me/917218755944"
+        class="hr-btn w-full sm:w-[260px] flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-lg font-semibold bg-gradient-to-r from-green-400 via-green-500 to-teal-400 text-white shadow-lg hover:from-green-500 hover:to-teal-500 hover:scale-105 transition focus:outline-none border-2 border-green-500"><i
+          class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      <a href="tel:7218755944"
+        class="hr-btn w-full sm:w-[260px] flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-lg font-semibold bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 text-white shadow-lg hover:from-purple-500 hover:to-pink-500 hover:scale-105 transition focus:outline-none border-2 border-purple-500"><i
+          class="fas fa-calendar"></i> Get Free Demo</a>
+    </div>
+    </ul>
+  </div>
+  <!-- MOBILE DRAWER MENU END -->
+
+  <!-- BLOG SECTION START -->
+  <main class="pt-2 mt-12">
+    <div class="max-w-4xl mx-auto px-4 pt-10 pb-14">
+      <!-- BLOG HERO -->
+      <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+          How to Grow Local Businesses Online & Generate Leads - Complete Guide
+        </h1>
+        <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+          A comprehensive 2025 guide for local business owners to boost their online presence and attract more customers
+        </p>
+        <div class="flex items-center justify-center space-x-6 text-sm text-gray-500 mb-8">
+          <span class="flex items-center gap-2">
+            <i class="fas fa-user text-gray-900"></i>
+            <span
+              class="font-semibold bg-gradient-to-tr from-purple-500 via-pink-500 to-yellow-400 bg-clip-text text-transparent">GrowBiz
+              Web Solutions</span>
+          </span>
+          <span class="flex items-center gap-2">
+            <i class="fas fa-calendar text-gray-900"></i>
+            <span>August 1, 2025</span>
+          </span>
+          <span class="flex items-center gap-2">
+            <i class="fas fa-clock text-gray-900"></i>
+            <span>15 min read</span>
+          </span>
+        </div>
+        <div class="mb-6">
+          <img src="./how-to-grow-business-online-and-generate-leads.png" alt="Local Business Growth"
+            class="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg" loading="lazy"/>
+        </div>
+      </header>
+
+      <!-- TABLE OF CONTENTS -->
+      <nav class="bg-blue-50 rounded-2xl p-6 mb-12 border border-blue-100">
+        <h2 class="text-lg font-bold text-blue-800 mb-4">📋 Table of Contents</h2>
+        <div class="grid md:grid-cols-2 gap-2">
+          <a href="#why-online"
+            class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            1. Why Growing Online Matters
+          </a>
+          <a href="#step-1" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            2. Build a Modern Website
+          </a>
+          <a href="#step-2" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            3. Google My Business
+          </a>
+          <a href="#step-3" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            4. Master Local SEO
+          </a>
+          <a href="#step-4" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            5. Content Marketing
+          </a>
+          <a href="#step-5" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            6. Social Media Strategy
+          </a>
+          <a href="#step-6" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            7. Online Reviews
+          </a>
+          <a href="#step-7" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            8. Lead Generation Tools
+          </a>
+          <a href="#step-8" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            9. Paid Advertising
+          </a>
+          <a href="#bonus" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            10. Bonus Tips & 2025 Trends
+          </a>
+          <a href="#faq" class="block p-2 hover:bg-blue-100 rounded-lg transition text-blue-700 hover:text-blue-900">
+            11. Frequently Asked Questions
+          </a>
+        </div>
+      </nav>
+
+      <!-- ARTICLE CONTENT -->
+      <article class="prose prose-lg max-w-none">
+
+        <!-- WHY ONLINE MATTERS -->
+        <section id="why-online" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-yellow-100 text-yellow-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">1</span>
+            Why Growing Your Local Business Online Matters
+          </h2>
+          <div class="bg-gradient-to-r from-yellow-100 to-yellow-50 rounded-xl p-6 mb-6 border border-yellow-200">
+            <p class="text-lg text-gray-700 mb-4">
+              In today's digital world, your online presence can make or break your local business. Here's why it's
+              crucial:
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="flex items-start gap-3">
+                <i class="fas fa-search text-yellow-600 mt-1"></i>
+                <span>90%+ of customers search online before visiting local businesses</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fas fa-mobile-alt text-yellow-600 mt-1"></i>
+                <span>Mobile searches for "near me" have grown by 200%</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fas fa-star text-yellow-600 mt-1"></i>
+                <span>Online reviews influence 93% of consumer decisions</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fas fa-chart-line text-yellow-600 mt-1"></i>
+                <span>Digital marketing delivers 3x more leads than traditional methods</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 1: WEBSITE -->
+        <section id="step-1" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-green-100 text-green-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">2</span>
+            Build a Modern, Mobile-First Website
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Your website is your digital storefront. Make it count with these essentials:
+            </p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-mobile text-green-600 mt-1"></i>
+                <div>
+                  <strong>Mobile-First Design:</strong> Over 70% of local searches happen on mobile devices
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-tachometer-alt text-green-600 mt-1"></i>
+                <div>
+                  <strong>Fast Loading Speed:</strong> Aim for under 3 seconds load time
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-phone text-green-600 mt-1"></i>
+                <div>
+                  <strong>Clear CTAs:</strong> Make it easy to call, WhatsApp, or book appointments
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-shield-alt text-green-600 mt-1"></i>
+                <div>
+                  <strong>Trust Signals:</strong> Display reviews, certifications, and contact info prominently
+                </div>
+              </li>
+            </ul>
+            <div class="bg-green-50 rounded-lg p-4 mt-4">
+              <p class="text-green-800 font-semibold">💡 Pro Tip: Include your business address, phone number, and hours
+                on every page for better local SEO.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 2: GOOGLE MY BUSINESS -->
+        <section id="step-2" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-red-100 text-red-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">3</span>
+            Claim & Optimize Your Google My Business
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Google My Business is the most important free tool for local businesses:</p>
+            <ol class="space-y-3 list-decimal list-inside">
+              <li><strong>Claim your listing</strong> at <a href="https://www.google.com/business/"
+                  class="text-blue-600 hover:underline" target="_blank">Google My Business</a></li>
+              <li><strong>Complete your profile</strong> with accurate business info, photos, and services</li>
+              <li><strong>Post regular updates</strong> about offers, events, and news</li>
+              <li><strong>Encourage and respond</strong> to customer reviews</li>
+              <li><strong>Add booking links</strong> and contact options</li>
+            </ol>
+            <div class="bg-red-50 rounded-lg p-4 mt-4">
+              <p class="text-red-800 font-semibold">⚠️ Important: Respond to ALL reviews within 24 hours to show you
+                care about customers.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 3: LOCAL SEO -->
+        <section id="step-3" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">4</span>
+            Master Local SEO
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Local SEO helps customers find your business when they search online:</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold text-purple-700 mb-2">On-Page SEO</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>✓ Include city/area names in titles and content</li>
+                  <li>✓ Use local keywords naturally</li>
+                  <li>✓ Add schema markup for local business</li>
+                  <li>✓ Optimize meta descriptions</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-purple-700 mb-2">Off-Page SEO</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>✓ Get listed on local directories</li>
+                  <li>✓ Ensure consistent NAP (Name, Address, Phone)</li>
+                  <li>✓ Build local citations</li>
+                  <li>✓ Get reviews on multiple platforms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 4: CONTENT MARKETING -->
+        <section id="step-4" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-yellow-100 text-yellow-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">5</span>
+            Content Marketing for Local Authority
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Create content that positions you as the local expert:</p>
+            <div class="space-y-4">
+              <div class="border-l-4 border-yellow-400 pl-4">
+                <h4 class="font-bold text-yellow-700">Local Stories & News</h4>
+                <p class="text-sm text-gray-600">Write about local events, community involvement, and success stories
+                </p>
+              </div>
+              <div class="border-l-4 border-yellow-400 pl-4">
+                <h4 class="font-bold text-yellow-700">How-To Guides</h4>
+                <p class="text-sm text-gray-600">Share tips and tutorials related to your services</p>
+              </div>
+              <div class="border-l-4 border-yellow-400 pl-4">
+                <h4 class="font-bold text-yellow-700">Customer Testimonials</h4>
+                <p class="text-sm text-gray-600">Feature real customer stories and case studies</p>
+              </div>
+              <div class="border-l-4 border-yellow-400 pl-4">
+                <h4 class="font-bold text-yellow-700">Behind-the-Scenes</h4>
+                <p class="text-sm text-gray-600">Show your team, process, and company culture</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 5: SOCIAL MEDIA -->
+        <section id="step-5" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-pink-100 text-pink-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">6</span>
+            Social Media Strategy for Local Reach
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Focus on platforms where your local customers spend time:</p>
+            <div class="grid md:grid-cols-3 gap-4 mb-4">
+              <div class="text-center p-4 bg-blue-50 rounded-lg">
+                <i class="fab fa-facebook text-blue-600 text-2xl mb-2"></i>
+                <h4 class="font-bold">Facebook</h4>
+                <p class="text-sm">Share updates, events, and engage with local groups</p>
+              </div>
+              <div class="text-center p-4 bg-pink-50 rounded-lg">
+                <i class="fab fa-instagram text-pink-600 text-2xl mb-2"></i>
+                <h4 class="font-bold">Instagram</h4>
+                <p class="text-sm">Post visual content, stories, and use local hashtags</p>
+              </div>
+              <div class="text-center p-4 bg-green-50 rounded-lg">
+                <i class="fab fa-whatsapp text-green-600 text-2xl mb-2"></i>
+                <h4 class="font-bold">WhatsApp</h4>
+                <p class="text-sm">Enable business chat for instant customer support</p>
+              </div>
+            </div>
+            <ul class="space-y-2 text-sm">
+              <li>📱 Post consistently (3-5 times per week)</li>
+              <li>📍 Use location tags and local hashtags</li>
+              <li>💬 Respond to comments and messages quickly</li>
+              <li>🎯 Run targeted local ads with small budgets</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- STEP 6: REVIEWS -->
+        <section id="step-6" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-orange-100 text-orange-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">7</span>
+            Get & Manage Online Reviews
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Reviews are digital word-of-mouth. Here's how to get more:</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold text-orange-700 mb-3">Getting Reviews</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>✓ Ask every happy customer personally</li>
+                  <li>✓ Send direct review links via WhatsApp/SMS</li>
+                  <li>✓ Offer small incentives (discount on next visit)</li>
+                  <li>✓ Make the process as easy as possible</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-orange-700 mb-3">Managing Reviews</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>✓ Respond to all reviews within 24 hours</li>
+                  <li>✓ Thank customers for positive reviews</li>
+                  <li>✓ Address negative reviews professionally</li>
+                  <li>✓ Show reviews on your website</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 7: LEAD GENERATION -->
+        <section id="step-7" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">8</span>
+            Lead Generation Tools That Work
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Convert website visitors into customers with these tools:</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3 p-3 bg-teal-50 rounded-lg">
+                <i class="fas fa-phone text-teal-600 mt-1"></i>
+                <div>
+                  <h4 class="font-bold">Click-to-Call Buttons</h4>
+                  <p class="text-sm text-gray-600">Make it easy for mobile users to call instantly</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 bg-teal-50 rounded-lg">
+                <i class="fab fa-whatsapp text-teal-600 mt-1"></i>
+                <div>
+                  <h4 class="font-bold">WhatsApp Chat Widget</h4>
+                  <p class="text-sm text-gray-600">Enable instant messaging for quick inquiries</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 bg-teal-50 rounded-lg">
+                <i class="fas fa-form text-teal-600 mt-1"></i>
+                <div>
+                  <h4 class="font-bold">Contact Forms</h4>
+                  <p class="text-sm text-gray-600">Simple forms with instant email notifications</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 p-3 bg-teal-50 rounded-lg">
+                <i class="fas fa-gift text-teal-600 mt-1"></i>
+                <div>
+                  <h4 class="font-bold">Lead Magnets</h4>
+                  <p class="text-sm text-gray-600">Offer free guides, consultations, or checklists</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 8: PAID ADS -->
+        <section id="step-8" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">9</span>
+            Invest in Paid Advertising
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <p class="text-gray-700 mb-4">Smart advertising can deliver immediate results:</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="border border-indigo-200 rounded-lg p-4">
+                <h4 class="font-bold text-indigo-700 mb-2">Google Ads</h4>
+                <ul class="text-sm space-y-1">
+                  <li>• Search ads for "service + location"</li>
+                  <li>• Google Maps ads for local visibility</li>
+                  <li>• Local Services Ads for service businesses</li>
+                </ul>
+                <p class="text-xs text-indigo-600 mt-2">Budget: ₹3,000-₹10,000/month</p>
+              </div>
+              <div class="border border-indigo-200 rounded-lg p-4">
+                <h4 class="font-bold text-indigo-700 mb-2">Facebook & Instagram Ads</h4>
+                <ul class="text-sm space-y-1">
+                  <li>• Target local audiences by location</li>
+                  <li>• Retarget website visitors</li>
+                  <li>• Promote special offers and events</li>
+                </ul>
+                <p class="text-xs text-indigo-600 mt-2">Budget: ₹2,000-₹8,000/month</p>
+              </div>
+            </div>
+            <div class="bg-indigo-50 rounded-lg p-4 mt-4">
+              <p class="text-indigo-800 font-semibold">💰 Start small with ₹1,000-₹2,000/month and scale based on
+                results.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BONUS TIPS -->
+        <section id="bonus" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-gray-100 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">10</span>
+            Bonus: 2025 Trends & Advanced Tips
+          </h2>
+          <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100 mb-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold text-gray-700 mb-3">🤖 AI & Automation</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>• AI chatbots for 24/7 customer support</li>
+                  <li>• Automated email follow-ups</li>
+                  <li>• Smart scheduling systems</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-700 mb-3">📱 Mobile-First Everything</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>• Voice search optimization</li>
+                  <li>• Progressive Web Apps (PWAs)</li>
+                  <li>• Mobile payment integration</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-700 mb-3">🎥 Video Marketing</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>• Instagram Reels and YouTube Shorts</li>
+                  <li>• Customer testimonial videos</li>
+                  <li>• Behind-the-scenes content</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-700 mb-3">🔒 Privacy & Trust</h4>
+                <ul class="space-y-2 text-sm">
+                  <li>• SSL certificates and secure payments</li>
+                  <li>• Transparent privacy policies</li>
+                  <li>• Local community involvement</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <span
+              class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold">11</span>
+            Frequently Asked Questions
+          </h2>
+          <div class="space-y-6">
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <h3 class="font-bold text-lg mb-2">❓ How long does it take to see results?</h3>
+              <p class="text-gray-700">Most local businesses see initial improvements within 2-4 weeks, with significant
+                results in 2-3 months of consistent effort. SEO and organic growth take longer (3-6 months), while paid
+                ads can show results immediately.</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <h3 class="font-bold text-lg mb-2">💰 How much should I budget for online marketing?</h3>
+              <p class="text-gray-700">Start with 5-10% of your monthly revenue. For a small local business, this
+                typically means ₹5,000-₹15,000/month for website, ads, and tools. You can always scale up as you see
+                results.</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <h3 class="font-bold text-lg mb-2">🔧 Do I need technical skills to implement these strategies?</h3>
+              <p class="text-gray-700">Basic strategies like Google My Business, social media, and review management
+                require no technical skills. For website optimization and advanced SEO, consider partnering with experts
+                like GrowBiz Web Solutions.</p>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+              <h3 class="font-bold text-lg mb-2">📊 How do I track if my online efforts are working?</h3>
+              <p class="text-gray-700">Use Google Analytics for website traffic, Google My Business insights for local
+                visibility, and track phone calls and WhatsApp messages. Set up conversion tracking to measure leads and
+                sales from each channel.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONCLUSION & CTA -->
+        <section class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white text-center mb-12">
+          <h2 class="text-3xl font-bold mb-4">Ready to Grow Your Local Business Online?</h2>
+          <p class="text-xl mb-6 opacity-90">
+            Implementing these strategies can transform your local business. Need help getting started?
+          </p>
+          <div class="a-cont flex flex-col sm:flex-row justify-center gap-3 animate-fadein delay-300">
+            <a href="https://wa.me/917218755944"
+              class="hr-btn w-full sm:w-[260px] flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-lg font-semibold bg-gradient-to-r from-green-400 via-green-500 to-teal-400 text-white shadow-lg hover:from-green-500 hover:to-teal-500 hover:scale-105 transition focus:outline-none border-2 border-green-500"><i
+                class="fab fa-whatsapp"></i> WhatsApp Us</a>
+            <a href="tel:7218755944"
+              class="hr-btn w-full sm:w-[260px] flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-lg font-semibold bg-gradient-to-r from-pink-500 via-pink-400 to-yellow-400 text-white shadow-lg hover:from-pink-600 hover:to-yellow-500 hover:scale-105 transition focus:outline-none border-2 border-pink-400"><i
+                class="fas fa-calendar"></i> Get Free Demo</a>
+          </div>
+          <p class="text-sm opacity-75 mt-4">
+            ⭐ Trusted by 50+ local businesses in India | 🚀 Results guaranteed in 90 days
+          </p>
+        </section>
+
+        <!-- AUTHOR BIO -->
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+          <div class="flex items-center gap-4 mb-4">
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              GB
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">GrowBiz Web Solutions</h3>
+              <p class="text-gray-600">Digital Marketing Experts for Local Businesses</p>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-4">
+            We help local businesses in India grow online with modern websites, SEO, and digital marketing strategies.
+            With 5+ years of experience and 50+ happy clients, we know what works for local businesses.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-facebook text-xl"></i></a>
+            <a href="#" class="text-pink-600 hover:text-pink-800"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="#" class="text-blue-500 hover:text-blue-700"><i class="fab fa-linkedin text-xl"></i></a>
+            <a href="https://wa.me/917218755944" class="text-green-600 hover:text-green-800"><i
+                class="fab fa-whatsapp text-xl"></i></a>
+          </div>
+        </div>
+
+      </article>
+    </div>
+  </main>
+  <!-- blog section ends here -->
+
+  <!-- Footer Section starts here -->
+  <footer class="footer mt-0">
+    <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-8 items-start text-left">
+      <!-- Brand & Social -->
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-2 mb-1"
+          style="background: rgb(31 41 55 / 0.8); padding: 0.5rem 1.1rem; border-radius: 0.75rem; box-shadow: 0 2px 12px rgba(0,0,0,0.13);">
+          <img src="./images/growbiz-web-solutions-logo.png" alt="GrowBiz Web Solutions logo - web design agency" class="w-11 shadow-lg" loading="lazy" />
+          <span class="font-bold text-lg md:text-lg tracking-widest text-white" style="letter-spacing:2px;">GrowBiz Web
+            Solutions</span>
+        </div>
+        <p class="text-white text-base">Helping <img
+            src="https://cdn.jsdelivr.net/npm/flag-icons@6.7.0/flags/4x3/in.svg" alt="India flag"
+            class="inline-block align-middle mr-1"
+            style="width: 1.35em; height: 1em; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.10); vertical-align: -0.15em;"
+            title="India" loading="lazy" />India's local businesses grow online with professional, powerful and affordable web
+          solutions. <a href="#services" class="text-yellow-200 underline hover:text-pink-200 transition">See our
+            services</a> or <a href="#contact" class="text-yellow-200 underline hover:text-pink-200 transition">contact
+            us for a free consultation</a>.</p>
+        <div class="flex gap-2 mt-2">
+          <a href="#"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-purple-500 to-pink-400 hover:from-purple-600 hover:to-pink-500 transition text-xl text-white shadow"><i
+              class="fab fa-facebook-f"></i></a>
+          <a href="#"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-pink-500 to-yellow-400 hover:from-pink-600 hover:to-yellow-500 transition text-xl text-white shadow"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 transition text-xl text-white shadow"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a href="#"
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-gradient-to-tr from-green-400 to-teal-400 hover:from-green-500 hover:to-teal-500 transition text-xl text-white shadow"><i
+              class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="./index.html#home" class="hover:underline text-white transition">Home</a></li>
+          <li><a href="./index.html#services" class="hover:underline text-white transition">Services</a></li>
+          <li><a href="./index.html#portfolio" class="hover:underline text-white transition">Portfolio</a></li>
+          <li><a href="./index.html#about" class="hover:underline text-white transition">About</a></li>
+          <li><a href="./index.html#contact" class="hover:underline text-white transition">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Services -->
+      <div>
+        <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Services</h4>
+        <ul class="space-y-2">
+          <li class="text-white">Website Design</li>
+          <li class="text-white">Google Business Listing</li>
+          <li class="text-white">SEO Optimization</li>
+          <li class="text-white">Logo Design</li>
+          <li class="text-white">WhatsApp Integration</li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-lg font-bold mb-3 text-white tracking-wide">Contact Info</h4>
+        <ul class="space-y-2">
+          <li class="flex items-center gap-2 text-green-400"><i class="fas fa-phone-alt text-green-400"></i> <a
+              href="tel:7218755944" class="font-medium text-green-400 transition"
+              style="text-decoration:none; color:inherit;"> 721-875-5944</a></li>
+          <li class="flex items-center gap-2 text-indigo-200"><i class="fab fa-whatsapp text-green-400"></i> <a
+              href="https://wa.me/917218755944" class="font-medium text-green-300 hover:text-green-400 transition"
+              style="text-decoration:none; color:inherit;"> 721-875-5944</a></li>
+          <li class="flex items-center gap-2 text-pink-200"><i class="fas fa-envelope text-pink-400"></i> <a
+              href="mailto:team@growbizwebsolutions.in" class="font-medium text-pink-200 hover:text-indigo-400 transition"
+              style="text-decoration:none; color:inherit;">team@growbizwebsolutions.in</a></li>
+          <li class="flex items-center gap-2 text-white"><i class="fas fa-map-marker-alt text-yellow-300"></i> <span
+              class="font-medium text-yellow-200">Nagpur, Maharashtra</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/20 mt-8 pt-4 text-center">
+      <p class="text-white text-sm">&copy; 2025 GrowBiz Web Solutions. All rights reserved. | Designed with <span
+          class="text-pink-300">❤️</span> for local businesses</p>
+    </div>
+  </footer>
+  <!-- Footer Section ends here -->
+</body>
+
+</html>
+
+<!-- Content relevance: Google mainly ranks pages based on actual page content, structure, and user experience.
+
+
+whatsapp us buttons - new no update
+get free demo buttons - new no update
+
+facebook and instaa - new links
+
+our portfolio - remove xyz
+our team - update name and photo
+
+contact section - 
+
+phone 
+whatsapp
+emails
+business hours
+
+contact forms submit - mails
+
+contact info - details changes
+live chat - account changes
+whatsapp business account
+
+last priority - Blog - standard formatt. -->
