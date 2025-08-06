@@ -569,40 +569,40 @@ function initVisualEffects() {
 /**
  * Optimized Quote Calculator
  */
-function initQuoteCalculator() {
-  const quickQuoteForm = getElement('quickQuoteForm');
-  if (!quickQuoteForm) return;
+// function initQuoteCalculator() {
+//   const quickQuoteForm = getElement('quickQuoteForm');
+//   if (!quickQuoteForm) return;
 
-  const costMap = { ecommerce: 5000, booking: 3000, seo: 2000, marketing: 4000 };
+//   const costMap = { ecommerce: 5000, booking: 3000, seo: 2000, marketing: 4000 };
 
-  quickQuoteForm.addEventListener('submit', function (e) {
-    e.preventDefault();
+//   quickQuoteForm.addEventListener('submit', function (e) {
+//     e.preventDefault();
 
-    const formData = new FormData(this);
-    const websiteType = formData.get('website_type');
-    const requirements = formData.getAll('requirements');
+//     const formData = new FormData(this);
+//     const websiteType = formData.get('website_type');
+//     const requirements = formData.getAll('requirements');
 
-    if (!websiteType) {
-      alert('Please select a website type');
-      return;
-    }
+//     if (!websiteType) {
+//       alert('Please select a website type');
+//       return;
+//     }
 
-    const basePrice = websiteType === 'static' ? 6999 : 19999;
-    const additionalCost = requirements.reduce((sum, req) => sum + (costMap[req] || 0), 0);
-    const totalPrice = basePrice + additionalCost;
+//     const basePrice = websiteType === 'static' ? 6999 : 19999;
+//     const additionalCost = requirements.reduce((sum, req) => sum + (costMap[req] || 0), 0);
+//     const totalPrice = basePrice + additionalCost;
 
-    const quoteAmount = getElement('quoteAmount');
-    const quoteResult = getElement('quoteResult');
+//     const quoteAmount = getElement('quoteAmount');
+//     const quoteResult = getElement('quoteResult');
 
-    if (quoteAmount && quoteResult) {
-      quoteAmount.textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
-      quoteResult.classList.remove('hidden');
-      quoteResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+//     if (quoteAmount && quoteResult) {
+//       quoteAmount.textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
+//       quoteResult.classList.remove('hidden');
+//       quoteResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+//     }
 
-    console.log('Quote generated:', { websiteType, requirements, totalPrice });
-  });
-}
+//     console.log('Quote generated:', { websiteType, requirements, totalPrice });
+//   });
+// }
 
 // ========================================
 // 7. AI CHAT & SVG ANIMATIONS
@@ -783,7 +783,7 @@ function initializeApp() {
   initHero3DTilt();
   
   // Forms and calculations
-  initQuoteCalculator();
+  // initQuoteCalculator();
   
   // AI Chat and animations
   ChatSystem.init();
@@ -798,6 +798,13 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
   initializeApp();
+}
+
+// Get your free quote form submission handler
+function showSuccessMessage(e) {
+  e.preventDefault();
+  document.getElementById('quickQuoteForm').style.display = 'none';
+  document.getElementById('successMessage').classList.remove('hidden');
 }
 
 // Global function exposure for HTML onclick handlers
