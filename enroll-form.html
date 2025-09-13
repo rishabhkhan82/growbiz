@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieHub - Join Our POS System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        },
+                        secondary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+        }
+
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+
+        .menu-item-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-item-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .restaurant-bg {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
+
+        .dark .form-container {
+            background: rgba(17, 24, 39, 0.95);
+        }
+
+        .input-focus {
+            transition: all 0.3s ease;
+        }
+
+        .input-focus:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.2);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center"
+    style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);">
+    <!-- Restaurant Background -->
+    <div class="min-h-screen">
+
+        <!-- Main Content -->
+        <main class="px-4 py-8">
+
+            <h2 class="text-center text-2xl font-bold text-white mb-6 tracking-wide animate__animated animate__fadeInDown">
+  <i class="fas fa-rocket text-white text-2xl"></i> Launching Soon!</br> Be the First to Experience Cafe-X POS
+</h2>
+
+            <!-- Enrollment Form -->
+            <div class="max-w-2xl mx-auto">
+                <div
+                    class="form-container rounded-3xl p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+                    <div class="flex flex-col justify-center items-center">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg">
+                            <div class="relative">
+                                <!-- Coffee cup icon -->
+                                <i class="fas fa-coffee text-white text-lg"></i>
+                            </div>
+                        </div>
+
+                        <h1 class="font-bold text-gray-900 dark:text-white text-xl mt-3">Cafe-X POS</h1>
+                        <div class="flex items-start justify-center space-x-1 mb-2 mt-3">
+                            <div class="flex flex-col items-center space-y-0.5">
+                                <div class="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-qrcode text-white text-[10px]"></i>
+                                </div>
+                                <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300">Scan</span>
+                            </div>
+                            <i class="fas fa-arrow-right text-primary-500 text-xs mx-0.5 mt-1"></i>
+                            <div class="flex flex-col items-center space-y-0.5">
+                                <div class="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-utensils text-white text-[10px]"></i>
+                                </div>
+                                <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300">Order</span>
+                            </div>
+                            <i class="fas fa-arrow-right text-primary-500 text-xs mx-0.5 mt-1"></i>
+                            <div class="flex flex-col items-center space-y-0.5">
+                                <div class="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-fire text-white text-[10px]"></i>
+                                </div>
+                                <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300">Kitchen</span>
+                            </div>
+                            <i class="fas fa-arrow-right text-primary-500 text-xs mx-0.5 mt-1"></i>
+                            <div class="flex flex-col items-center space-y-0.5">
+                                <div class="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-concierge-bell text-white text-[10px]"></i>
+                                </div>
+                                <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300">Serve</span>
+                            </div>
+                            <i class="fas fa-arrow-right text-primary-500 text-xs mx-0.5 mt-1"></i>
+                            <div class="flex flex-col items-center space-y-0.5">
+                                <div class="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-receipt text-white text-[10px]"></i>
+                                </div>
+                                <span
+                                    class="text-[9px] font-medium text-gray-700 dark:text-gray-300 text-center">Bill</span>
+                            </div>
+                            <i class="fas fa-arrow-right text-primary-500 text-xs mx-0.5 mt-1"></i>
+                            <div class="flex flex-col items-center space-y-0.5">
+                                <div class="w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-chart-bar text-white text-[10px]"></i>
+                                </div>
+                                <span class="text-[9px] font-medium text-gray-700 dark:text-gray-300">Reports</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            1 Month Free Trial
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Empower your café with seamless operations and smart technology.
+                        </p>
+                    </div>
+
+                    <form id="enroll-form" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Hidden Access Key -->
+                        <input type="hidden" name="access_key" value="8d776a4d-06a2-474b-b6be-cbfcae0b8c03">
+                        <!-- Cafe Name -->
+                        <div class="animate__animated animate__fadeInUp">
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                <i class="fas fa-store text-primary-500 mr-2"></i>
+                                Cafe/Restaurant Name *
+                            </label>
+                            <input type="text" name="cafe-name" id="cafe-name" required
+                                class="input-focus w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 text-lg"
+                                placeholder="Enter your cafe or restaurant name">
+                        </div>
+
+                        <!-- Owner/Manager Name -->
+                        <div class="animate__animated animate__fadeInUp">
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                <i class="fas fa-user-tie text-primary-500 mr-2"></i>
+                                Owner/Manager Name *
+                            </label>
+                            <input type="text" name="owner-name" id="owner-name" required
+                                class="input-focus w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 text-lg"
+                                placeholder="Enter your full name">
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div class="animate__animated animate__fadeInUp">
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                <i class="fas fa-mobile-alt text-primary-500 mr-2"></i>
+                                Mobile Number *
+                            </label>
+                            <input type="tel" name="mobile-number" id="mobile-number" required
+                                class="input-focus w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 text-lg"
+                                placeholder="Enter your mobile number">
+                        </div>
+
+                        <!-- Address -->
+                        <div class="animate__animated animate__fadeInUp">
+                            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+                                <i class="fas fa-map-marker-alt text-primary-500 mr-2"></i>
+                                Business Address *
+                            </label>
+                            <textarea name="business-address" id="business-address" required rows="3"
+                                class="input-focus w-full px-6 py-4 bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all duration-300 text-lg resize-none"
+                                placeholder="Enter your complete business address"></textarea>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="flex items-start space-x-3 animate__animated animate__fadeInUp">
+                            <input type="checkbox" name="terms" id="terms" required
+                                class="mt-1 w-5 h-5 text-primary-500 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2">
+                            <label class="text-sm text-gray-600 dark:text-gray-300">
+                                I agree to the <a href="#"
+                                    class="text-primary-500 hover:text-primary-600 font-semibold">Terms of Service</a>
+                                and <a href="#" class="text-primary-500 hover:text-primary-600 font-semibold">Privacy
+                                    Policy</a>.
+                                I understand that the free trial lasts for one month only, and a subscription will be
+                                required to continue using the service after the trial period.
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold py-5 px-4 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg animate__animated animate__fadeInUp animate__delay-7s">
+                            <i class="fas fa-rocket mr-3"></i>
+                            Enroll Free 1-Month Trial
+                        </button>
+                    </form>
+
+                    <!-- Trust Indicators -->
+                    <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                        <div class="text-center">
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+
+                                <a href="https://growbizwebsolutions.in" target="_blank"
+                                    class="text-primary-500 hover:text-primary-600 underline font-semibold transition">
+                                    Powered by Growbiz Web Solutions
+                                </a>
+                            </p>
+                            <div class="flex items-center justify-center space-x-8 opacity-60">
+                                <div class="flex items-center">
+                                    <i class="fas fa-shield-alt text-green-500 mr-2"></i>
+                                    <span class="text-sm">100% Offline</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-lock text-green-500 mr-2"></i>
+                                    <span class="text-sm">Data Protected</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-headset text-green-500 mr-2"></i>
+                                    <span class="text-sm">24/7 Support</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Dark Mode Toggle Script -->
+    <script>
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const cafeName = this.querySelector('input[type="text"]').value;
+            const ownerName = this.querySelectorAll('input[type="text"]')[1].value;
+            const mobile = this.querySelector('input[type="tel"]').value;
+            const address = this.querySelector('textarea').value;
+
+            // Simple validation
+            if (!cafeName || !ownerName || !mobile || !address) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+
+
+            // Contact form validation (show errors only on submit)
+            const form = document.getElementById('enroll-form');
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i>Processing...';
+                submitBtn.disabled = true;
+
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            alert('🎉 Congratulations! Your free trial has been Enrolled. You will receive an SMS notification once Cafe-X is launched, along with further instructions for setup.');
+                            submitBtn.innerHTML = '🎉 Enrolled Successfully';
+                            submitBtn.disabled = true;
+                        } else {
+                            console.log(response);
+                            submitBtn.innerHTML = json.message;
+                            submitBtn.disabled = true;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        submitBtn.innerHTML = '😢 Something went wrong!';
+                        submitBtn.disabled = true;
+                    })
+                    .then(function () {
+                        form.reset();
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    });
+            });
+        });
+
+        // Add click animations to form elements
+        document.querySelectorAll('.input-focus').forEach(input => {
+            input.addEventListener('focus', function () {
+                this.parentElement.classList.add('transform', 'scale-105');
+            });
+
+            input.addEventListener('blur', function () {
+                this.parentElement.classList.remove('transform', 'scale-105');
+            });
+        });
+
+        // Add hover animations to feature cards
+        document.querySelectorAll('.menu-item-hover').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-8px)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+
+</html>
